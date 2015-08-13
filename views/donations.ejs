@@ -1,0 +1,95 @@
+             <!-- ABOUT PAGE : begin -->
+                <div class="about-page">
+
+                    <!-- PAGE TITLE : begin -->
+                    <div id="page-title">
+                        <div class="container">
+                            <div class="page-title-inner">
+                                <h1><%- i18n.__('donate.welcome') %><span><%- i18n.__('donate.slogan') %></span></h1>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- PAGE TITLE : end -->
+
+                    <!-- PAGE CORE : begin -->
+                    <div id="page-core">
+                        <div class="container">
+                            <div class="cta-message">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                    <h2 class="text-center"><%- i18n.__('donate.monthly') %></h2>
+                                    <br />
+                                    <a href="http://www.patreon.com/thedark1337" target="_blank"><img class="img-thumbnail center-block" src="/img/patreon.png" alt="Patreon" /></a>
+                                    </div>
+                                    <div class="col-xs-4">
+                                    <h2 class="text-center"><%- i18n.__('donate.onetime.monthly') %></h2>
+                                    <br />
+                                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                                    <input type="hidden" name="cmd" value="_s-xclick">
+                                    <input type="hidden" name="hosted_button_id" value="VK42MNXQAM3U8">
+                                    <input type="image" src="/img/donate.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" class="center-block">
+                                    </form>
+                                    </div>
+                                    <div class="col-xs-4">
+                                    <h2 class="text-center"><%- i18n.__('donate.weekly') %></h2>
+                                    <br />
+                                    <a href="https://gratipay.com/~thedark1337/" target="_blank"><img class="img-thumbnail center-block" src="/img/gratipay.bw.svg" alt="Gratipay"></img></a>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <h3 class="text-center"><%- i18n.__('donate.info.ico') %></h3>
+                                        <ul>
+                                            <li><i class="fa  fa-fw fa-chevron-right"></i>
+                                                <%- i18n.__('donate.info.1') %>
+                                            </li>
+                                            <li><i class="fa  fa-fw fa-chevron-right"></i>
+                                                <%- i18n.__('donate.info.2') %>
+                                                <a href="mailto:1337alexpham@gmail.com?subject=Donations" class="btn">
+                                                    1337alexpham@gmail.com
+                                                </a>
+                                                <%- i18n.__('donate.info.3') %>
+                                            </li>
+                                            <li><i class="fa  fa-fw fa-chevron-right"></i>
+                                                <%- i18n.__('donate.info.4') %>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <h3 class="text-center"><%- i18n.__('donate.tiers') %> (Gratipay / Paypal)</h3>
+                                            <div class="table-responsive">
+                                              <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <td><%- i18n.__('donate.tiers.tier') %></td>
+                                                    <td><%- i18n.__('donate.tiers.amt') %></td>
+                                                </tr>
+                                            </thead>
+                                                <tbody>
+                                               <tr>
+                                                    <td><%- i18n.__('donate.tiers.bronze') %></td>
+                                                    <td>$10 - $49.99</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><%- i18n.__('donate.tiers.silver') %></td>
+                                                    <td>$50 - $99.99</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><%- i18n.__('donate.tiers.gold') %></td>
+                                                    <td>$100 - $199.99</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><%- i18n.__('donate.tiers.platinum') %></td>
+                                                    <td>$200 - $499.99</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><%- i18n.__('donate.tiers.diamond') %></td>
+                                                    <td>$500+</td>
+                                                </tr>
+                                                 </tbody>
+                                            </table>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>

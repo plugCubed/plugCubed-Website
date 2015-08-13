@@ -1,0 +1,265 @@
+<!doctype html>
+<html>
+
+    <head>
+        <title>plug&#179; - <%= title %>
+        </title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--[if IE]><link rel="shortcut icon" href="/img/favicons/favicon.ico"><![endif]-->
+        <link rel="apple-touch-icon" sizes="57x57" href="/img/favicons/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/img/favicons/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/img/favicons/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/img/favicons/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/img/favicons/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/img/favicons/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/img/favicons/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/img/favicons/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="/img/favicons/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/img/favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/img/favicons/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/img/favicons/favicon-16x16.png">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/img/favicons/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+
+        <!-- STYLESHEETS : begin -->
+        <link rel="stylesheet" type="text/css" href="js/bundle.css">
+        <link rel="stylesheet" type="text/css" href="js/mackbethTheme.css">
+        <link rel="stylesheet" type="text/css" href="stylesheets/custom.css">
+    </head>
+
+    <body id="top">
+        <!-- HEADER : begin -->
+        <header>
+
+            <!-- TOPBAR : begin -->
+            <div id="topbar">
+                <div class="container">
+                    <div class="topbar-inner clearfix">
+                        <!-- SOCIAL ICONS : begin -->
+                        <div class="social-icons">
+                            <ul class="clearfix">
+                                <li class="twitter"><a href="https://twitter.com/plugCubed" title="plug&#179; on Twitter"><i></i></a></li>
+                                <!-- <li class="facebook"><a href="#"><i></i></a></li> -->
+                                <!-- <li class="googleplus"><a href="#"><i></i></a></li> -->
+                                <li class="twitch"><a href="https://twitch.tv/plugcubed" title="plug&#179; on Twitch.tv"><i style="background:url('/img/twitch.png') 0 0 no-repeat;"></i></a></li>
+                                <li class="plugdj"><a href="https://plug.dj/plugcubed" title="Official plug&#179; community on plug.dj"><i style="background:url('/img/plugdj.png') 0 0 no-repeat;"></i></a></li>
+                            </ul>
+                        </div>
+                        <!-- SOCIAL ICONS : end -->
+                    </div>
+                </div>
+            </div>
+            <!-- TOPBAR : end -->
+
+            <!-- NAVBAR : begin -->
+            <div id="navbar">
+                <div class="container">
+                    <div class="navbar-inner clearfix">
+
+                        <!-- BRANDING : begin -->
+                        <a href="/" >
+                        <div class="wrap">
+    <div class="cube">
+        <div class="front"></div>
+        <div class="back"></div>
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+</div>
+                        </a>
+                        <!-- BRANDING : end -->
+
+                        <!-- MAIN NAV : begin -->
+                        <nav class="main">
+                            <button class="btn"><i class="fa fa-reorder"></i></button>
+                            <ul>
+                                <li <% if (page === 'index') { %> class="active" <% } %>>
+                                        <a href="/"><strong><%- i18n.__('layout.menu.home') %></strong><span><%- i18n.__('layout.menu.home.desc') %></span></a>
+                                </li>
+                                <li <% if (page ==='alpha') { %> class="active" <% }%>>
+                                   <a href="/alpha"><strong><%- i18n.__('layout.menu.alpha') %></strong><%- i18n.__('layout.menu.alpha.desc') %></a>
+                                </li>
+                                <li <% if (page === 'about' || page ==='translate' || page ==='ambassadors') { %> class="active" <% } %>>
+                                        <a href="/about"><strong><%- i18n.__('layout.menu.about') %></strong><span><%- i18n.__('layout.menu.about.desc') %></span></a>
+                                        <span class="arrow"><i></i></span>
+                                        <ul>
+                                            <li>
+                                                 <a href="/translate"><strong><%- i18n.__('layout.menu.translate') %></strong>&nbsp;<span><%- i18n.__('layout.menu.translate.desc') %></span></a>
+                                            </li>
+                                            <li>
+                                                <a href="/ambassadors"><strong><%- i18n.__('layout.menu.ambassador') %></strong>&nbsp;<span><%- i18n.__('layout.menu.ambassador.desc') %></span></a>
+                                            </li>
+                                        </ul>
+                                </li>
+                                <li <% if (page === 'commands' || page === 'features' || page === 'install' || page === 'license' || page === 'readme') { %> class="active" <% } %>>
+                                        <a href="/readme"><strong><%- i18n.__('layout.menu.readme') %></strong><span><%- i18n.__('layout.menu.readme.desc') %></span></a>
+                                        <span class="arrow"><i></i></span>
+                                        <ul>
+                                            <li><a href="/install"><span>How to</span><strong> Install</strong></a></li>
+                                            <li><a href="/features"><strong><%- i18n.__('layout.menu.features') %></strong><span> List</span></a></li>
+                                            <li><a href="/commands"><strong>Command</strong><span> List</span></a></li>
+                                            <li><a href="/license"><span>GPLv3 </span><strong><%- i18n.__('layout.menu.license') %></strong></a></li>
+                                        </ul>
+                                </li>
+                                <li <% if (page === 'donations') { %> class="active" <% } %>>
+                                        <a href="/donations"><strong><%- i18n.__('layout.menu.donations') %></strong><span><%- i18n.__('layout.menu.donations.desc') %></span></a>
+                                </li>
+                                <li class="last">
+                                    <a><strong><%- i18n.__('layout.menu.links') %></strong><span><%- i18n.__('layout.menu.links.desc') %></span></a><span class="arrow"><i></i></span>
+                                    <ul>
+                                        <li><a href="https://github.com/plugCubed/plugCubed" target="_blank"><strong>Source</strong><span> on GitHub</span></a></li>
+                                        <li><a href="https://github.com/plugCubed/plugCubed/issues" target="_blank"><strong>Bugtracker</strong><span> / Feature Requests</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="last">
+
+                                </li>
+                            </ul>
+                            <span class="indicator"></span>
+                        </nav>
+                        <!-- MAIN NAV : end -->
+
+                    </div>
+                </div>
+            </div>
+            <!-- NAVBAR : begin -->
+
+        </header>
+        <!-- HEADER : end -->
+        <%- body %>
+            </div>
+            <% if (page !=='alpha' && page !== 'translate' && page !== 'ambassadors') { %>
+                <!-- CTA MESSAGE : begin -->
+                <section>
+                    <div class="container">
+                        <div class="cta-message">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <h2><%- i18n.__('layout.start') %></h2>
+                                    <p><%- i18n.__('layout.usage') %></p>
+                                </div>
+                            </div>
+                            <div class="row text-center">
+                                <div class="col-xs-4"><a class="button color6" style="float: none" onclick="return alert('Drag this button to your bookmarks'),false;" href="javascript:(function(){$.getScript('https://d1rfegul30378.cloudfront.net/files/plugCubed.js');}());">plug³</a></div>
+                                <div class="col-xs-4"><a class="button color6" style="float: none" onclick="return alert('Drag this button to your bookmarks'),false;" href="javascript:(function(){$.getScript('https://d1rfegul30378.cloudfront.net/files/plugCubed.min.js');}());">plug³ min</a></div>
+                                <div class="col-xs-4"><a class="button color6" style="float: none" href="http://d1rfegul30378.cloudfront.net/files/plugCubed.user.js" target="_blank">Userscript</a></div>
+                            </div>
+                            <br />
+                            <hr>
+                            <br />
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <h2><%- i18n.__('layout.extension.header') %></h2>
+                                    <p><%- i18n.__('layout.extension.desc') %></p>
+                                    <p>&nbsp;</p>
+                                </div>
+                            </div>
+                            <div class="row text-center">
+                                <div class="col-xs-4">
+                                <a class="button color6 clearfix" style="float: none" href="https://addons.opera.com/en/extensions/details/plugcubed/" target="_blank">Opera</a>
+                                </div>
+                                <div class="col-xs-4">
+                                <a class="button color6" style="float: none" href="https://chrome.google.com/webstore/detail/plugcubed/cfeomlnnfncblkheeneahgmngbnbiaoi" target="_blank">Chrome</a>
+                                </div>
+                                <div class="col-xs-4">
+                                <a class="button color6" style="float: none" href="https://addons.mozilla.org/en-US/firefox/addon/plugcubed" target="_blank">Firefox</a>
+                                </div>
+                            </div>
+                            <br />
+                            <hr>
+                            <br />
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <h2><%- i18n.__('global.bookmark') %></h2>
+                                    <p><%- i18n.__('global.bookmark.desc') %></p>
+                                    <pre>javascript:(function(){$.getScript('https://d1rfegul30378.cloudfront.net/files/plugCubed.js');}());</pre>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+                <!-- CTA MESSAGE : end -->
+                <% } %>
+                    </div>
+                    <!-- PAGE CORE : end -->
+
+                    </div>
+                    <!-- ABOUT PAGE : end -->
+
+                    <!-- TWITTER FEED : begin -->
+                    <div id="twitter-feed">
+                        <div class="container">
+                            <div class="twitter-feed-inner">
+
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <div class="title">
+                                            <i class="fa fa-fw fa-twitter "></i>
+                                            <h3>Latest from <a href="https://twitter.com/plugCubed" target="_blank">Twitter</a></h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-9">
+                                        <p class="tweet">
+                                            <div id="latestTweet" style="margin-top:-10px;"></div>
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- TWITTER FEED : end -->
+                    <!-- FOOTER : begin -->
+                    <footer>
+                        <div class="container">
+                            <div class="footer-inner clearfix">
+
+                                <!-- COPYRIGHT : begin -->
+                                <p class="copyright"><i class="fa fa-fw fa-copyright"></i>Copyright plug³ (plugCubed) 2013-
+                                    <%= moment().format('YYYY') %>.</p>
+                                <!-- COPYRIGHT : end -->
+
+                                <!-- FOOTER NAV : begin -->
+                                <nav class="footer">
+                                    <ul>
+                                        <li <% if (page === 'index') { %> class="active" <% } %>>
+                                            <a href="/"><%- i18n.__('layout.menu.home') %></a>&nbsp;/
+                                        </li>
+                                        <li <% if (page === 'about') { %> class="active" <% } %>>
+                                              <a href="/about"><%- i18n.__('layout.menu.about') %></a>&nbsp;/
+                                        </li>
+                                        <li <% if (page === 'commands' || page === 'features' || page === 'install' || page === 'license' || page === 'readme') { %> class="active"
+                                            <% } %>><a href="/readme"><%- i18n.__('layout.menu.readme') %></a>&nbsp;/
+                                        </li>
+                                        <li <% if (page === 'license') { %> class="active" <% } %>>
+                                            <a href="/license"><%- i18n.__('layout.menu.license') %></a>&nbsp;/
+                                        </li>
+                                        <li>
+                                            <a href="https://github.com/plugCubed/plugCubed" target="_blank">Source</a>&nbsp;/
+                                        </li>
+                                    </ul>
+                                </nav>
+                                <!-- FOOTER NAV : end -->
+
+                            </div>
+                        </div>
+                    </footer>
+                    <!-- FOOTER : end -->
+
+                    <!-- SCREEN WIDTH : begin -->
+                    <var id="screen-width"><span></span></var>
+                    <!-- SCREEN WIDTH : end -->
+                    <!-- SCRIPTS: begin -->
+                    <script src="/js/bundle.js"></script>
+                    <script src="js/mackbethTheme.js"></script>
+                    <script src="/js/twitterFetcher.js"></script>
+                    <!-- SCRIPTS: end -->
+    </body>
+
+</html>

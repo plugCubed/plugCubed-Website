@@ -1,0 +1,94 @@
+{
+  "name": "plugCubed-web",
+  "description": "Website for plug3",
+  "version": "1.0.0",
+  "author": "Thedark1337 <thedark1337@thedark1337.com> (https://thedark1337.com)",
+  "contributors": [
+    {
+      "name": "James Blaik",
+      "email": "jblaik74@gmail.com"
+    },
+    {
+      "name": "Thomas Andresen",
+      "email": "TAT@plugcubed.net"
+    },
+    {
+      "name": "Sam Mills",
+      "email": "therealhenchman@gmail.com"
+    }
+  ],
+  "dependencies": {
+    "chalk": "^1.1.0",
+    "he": "^0.5.0",
+    "jethro": "^2.6.1",
+    "jethro-koa": "github:thedark1337/jethro-koa",
+    "koa": "^0.21.0",
+    "koa-conditional-get": "^1.0.3",
+    "koa-ejs": "^2.0.1",
+    "koa-etag": "^2.0.0",
+    "koa-frouter": "^0.3.2",
+    "koa-i18n": "^1.1.0",
+    "koa-locale": "^1.0.0",
+    "koa-router": "^5.1.2",
+    "koa-serve-static": "0.0.1",
+    "koa-x-request-id": "^1.1.0",
+    "moment": "^2.10.6"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "eslint": "^1.1.0",
+    "eslint-config-thedark1337": "^0.2.1",
+    "eslint-config-xo": "^0.3.0",
+    "istanbul": "^0.3.17",
+    "jspm": "^0.16.0-beta.7",
+    "load-grunt-tasks": "^3.2.0",
+    "mocha": "^2.2.5",
+    "mocha-eslint": "github:thedark1337/mocha-eslint",
+    "mocha-lcov-reporter": "0.0.2",
+    "supertest": "^1.0.1"
+  },
+  "homepage": "https://plugcubed.net",
+  "jspm": {
+    "directories": {
+      "baseURL": "public"
+    },
+    "dependencies": {
+      "bootstrap": "github:twbs/bootstrap@^3.3.5",
+      "clean-css": "npm:clean-css@3.3.8",
+      "css": "github:systemjs/plugin-css@^0.1.13",
+      "font-awesome": "npm:font-awesome@^4.4.0",
+      "jquery": "github:components/jquery@^2.1.4",
+      "jquery.event.move": "github:stephband/jquery.event.move@^1.3.6",
+      "jquery.magnific-popup": "github:dimsemenov/Magnific-Popup@^1.0.0",
+      "twitterFetcher": "github:jasonmayes/Twitter-Post-Fetcher@^13.1.0"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.22",
+      "babel-runtime": "npm:babel-runtime@^5.8.20",
+      "core-js": "npm:core-js@^1.0.1"
+    },
+    "overrides": {
+      "github:stephband/jquery.event.move@1.3.6": {
+        "main": "js/jquery.event.move.js"
+      }
+    }
+  },
+  "keywords": [
+    "jethro",
+    "koajs",
+    "plug3",
+    "plugcubed",
+    "plugdj",
+    "scripts",
+    "website"
+  ],
+  "license": "GPL-3.0",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "coverage": "istanbul cover _mocha -- -R mocha-lcov-reporter && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
+    "postinstall": "[ \"$NODE_ENV\" != test ] && jspm install && jspm bundle-sfx js/bundle.orig.js public/js/bundle.js --minify && jspm bundle-sfx js/twitterFetcher.orig.js public/js/twitterFetcher.js --minify && jspm bundle-sfx js/mackbethTheme.orig.js public/js/mackbethTheme.js --minify || exit 0",
+    "start": "node --harmony app.js",
+    "test": "NODE_ENV=test mocha"
+  }
+}

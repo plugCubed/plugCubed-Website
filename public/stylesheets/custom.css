@@ -1,0 +1,82 @@
+.wrap {
+    -webkit-perspective: 800px;
+    perspective: 800px;
+    -webkit-perspective-origin: 50% 50px;
+    perspective-origin: 50% -90px;
+    position: absolute;
+}
+
+.cube {
+    -webkit-animation: rotate-cube 4s infinite linear;
+    animation: rotate-cube 4s infinite linear;
+    width: 100px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.cube div {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+}
+
+.left,
+.right,
+.front,
+.bottom,
+.top,
+.back {
+    background-size: contain;
+    background-image: url('../img/p3bigSquare.png');
+}
+
+.back {
+    -webkit-transform: translateZ(-50px) rotateY(180deg);
+    transform: translateZ(-50px) rotateY(180deg);
+}
+
+.right {
+    -webkit-transform: rotateY(-270deg) translateX(50px);
+    transform: rotateY(-270deg) translateX(50px);
+    -webkit-transform-origin: top right;
+    -ms-transform-origin: top right;
+    transform-origin: top right;
+}
+
+.left {
+    -webkit-transform: rotateY(270deg) translateX(-50px);
+    transform: rotateY(270deg) translateX(-50px);
+    -webkit-transform-origin: center left;
+    -ms-transform-origin: center left;
+    transform-origin: center left;
+}
+
+.top {
+    -webkit-transform: rotateX(-90deg) translateY(-50px);
+    transform: rotateX(-90deg) translateY(-50px);
+    -webkit-transform-origin: top center;
+    -ms-transform-origin: top center;
+    transform-origin: top center;
+}
+
+.bottom {
+    -webkit-transform: rotateX(90deg) translateY(50px);
+    transform: rotateX(90deg) translateY(50px);
+    -webkit-transform-origin: bottom center;
+    -ms-transform-origin: bottom center;
+    transform-origin: bottom center;
+}
+
+.front {
+    -webkit-transform: translateZ(50px);
+    transform: translateZ(50px);
+}
+
+@-webkit-keyframes rotate-cube {
+    0% {
+        -webkit-transform: rotateY(0deg);
+    }
+    100% {
+        -webkit-transform: rotateY(360deg);
+    }
+}

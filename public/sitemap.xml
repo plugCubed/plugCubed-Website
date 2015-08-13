@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+        <url>
+            <loc>https://plugcubed.net/</loc>
+        </url>
+        <url>
+            <loc>https://plugcubed.net/about</loc>
+        </url>
+        <url>
+            <loc>https://plugcubed.net/ambassadors</loc>
+        </url>
+        <url>
+            <loc>https://plugcubed.net/alpha</loc>
+        </url>
+        <url>
+            <loc>https://plugcubed.net/commands</loc>
+        </url>
+        <url>
+            <loc>https://plugcubed.net/donations</loc>
+        </url>
+        <url>
+            <loc>https://plugcubed.net/features</loc>
+        </url>
+        <url>
+            <loc>https://plugcubed.net/install</loc>
+        </url>
+        <url>
+            <loc>https://plugcubed.net/license</loc>
+        </url>
+        <url>
+            <loc>https://plugcubed.net/readme</loc>
+        </url>
+        <url>
+            <loc>https://plugcubed.net/translate</loc>
+        </url>
+    </urlset>
