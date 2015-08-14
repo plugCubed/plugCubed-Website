@@ -1,7 +1,7 @@
 {
   "name": "plugCubed-web",
   "description": "Website for plug3",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "Thedark1337 <thedark1337@thedark1337.com> (https://thedark1337.com)",
   "contributors": [
     {
@@ -29,7 +29,6 @@
     "koa-frouter": "^0.3.2",
     "koa-i18n": "^1.1.0",
     "koa-locale": "^1.0.0",
-    "koa-router": "^5.1.2",
     "koa-serve-static": "0.0.1",
     "koa-x-request-id": "^1.1.0",
     "moment": "^2.10.6"

@@ -31,7 +31,7 @@ For Testing please run `NODE_ENV=test npm install` and `npm test`.
 
 ### Translation
 
-Please use  [CrowdIn]() for any translations.
+Please use  [CrowdIn](https://crowdin.com/project/plugcubed-website) for any translations.
 
 ### License
 Copyright &copy; 2015 The plug&#179; Team and other contributors
