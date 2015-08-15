@@ -33,6 +33,10 @@ For Testing please run `NODE_ENV=test npm install` and `npm test`.
 
 Please use  [CrowdIn](https://crowdin.com/project/plugcubed-website) for any translations.
 
+### Support
+
+We have a [Slack](https://plugcubed.slack.com/) channel we use to communicate. Please email [1337alexpham@gmail.com](mailto:1337alexpham@gmail.com?subject=Slack&nbsp;Plug3) if you'd like to be added
+
 ### License
 Copyright &copy; 2015 The plug&#179; Team and other contributors
 
