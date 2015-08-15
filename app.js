@@ -25,7 +25,7 @@ if (process.env.NODE_ENV !== 'test') {
 
 locale(app);
 app.use(/** @this Koa  */ function *(next) {
-    let url = this.originalUrl.replace('/', '');
+    let url = this.path.replace('/', '');
     if (url === '') url = 'index';
     const title = url.charAt(0).toUpperCase() + url.slice(1);
     this.state.he = he;
@@ -46,7 +46,7 @@ render(app, {
 app.use(i18n(app, {
     directory: './locales',
     extension: '.json',
-    locales: ['en'],
+    locales: ['en', 'cs', 'fr'],
     modes: [
         'query',
         'cookie',
@@ -74,6 +74,6 @@ app.use(serveStatic(path.join(__dirname, 'public'), {
 
 app.name = 'p3Site';
 /* istanbul ignore next: Not needed to be covered */
-app.listen(7001, function() {
+app.listen(process.env.PORT || 7001, function() {
     logger('info', 'Web', chalk.cyan('Started: ') + packInfo.name + chalk.cyan(' Version: ') + packInfo.version);
 });
