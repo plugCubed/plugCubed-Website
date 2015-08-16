@@ -46,7 +46,7 @@ render(app, {
 app.use(i18n(app, {
     directory: './locales',
     extension: '.json',
-    locales: ['en', 'cs', 'fr'],
+    locales: ['en', 'cs', 'es', 'fr', 'hr', 'sl', 'tr'],
     modes: [
         'query',
         'cookie',
