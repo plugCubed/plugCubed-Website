@@ -1,4 +1,4 @@
-#plug&#179; Website (plugCubed Website) [![Build Status](https://img.shields.io/travis/plugCubed/plugCubed-Website.svg)](https://travis-ci.org/plugCubed/plugCubed-Website) [![Code Coverage](https://img.shields.io/coveralls/plugCubed/plugCubed-Website.svg)](https://coveralls.io/plugCubed/plugCubed-website) [![David](https://img.shields.io/david/plugcubed/plugCubed-Website.svg)](https://david-dm.org/plugcubed/plugCubed-Website) [![Gratipay](https://img.shields.io/gratipay/thedark1337.svg)](https://www.gratipay.com/thedark1337/)
+#plug&#179; Website (plugCubed Website) [![CrowdIn][crowdin-badge]][crowdin-url] [![Build Status][travis-badge]][travis-url] [![Code Coverage][coverage-badge]][coverage-url] [![David][david-badge]][david-url] [![Gratipay][gratipay-badge]][gratipay-url]
 
 ### Information / Installation
 This is the repository for plug&#179;'s website. We are currently using [KoaJS](https://github.com/koajs/koa) as the server.
@@ -8,7 +8,6 @@ This is the repository for plug&#179;'s website. We are currently using [KoaJS](
 * [Node.JS](http://nodejs.org/download/) OR [io.js](https://iojs.org).
 
 * **Note**: if using Node.js it must be v0.11.6 or higher with the `--harmony flag` for generators support. For ease of use we have `npm start` with -`-harmony` included.
-* **Note 2**: Due to Koa-Frouter's usage of invalid file names, Windows is not compatible for development purposes
 
 ### Developers
 
@@ -31,7 +30,7 @@ For Testing please run `NODE_ENV=test npm install` and `npm test`.
 
 ### Translation
 
-Please use  [CrowdIn](https://crowdin.com/project/plugcubed-website) for any translations.
+Please use  [CrowdIn][crowdin-url] for any translations.
 
 ### Support
 
@@ -52,3 +51,14 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see http://www.gnu.org/licenses/.
+
+[coverage-badge]: https://img.shields.io/coveralls/plugCubed/plugCubed-Website.svg
+[coverage-url]: https://coveralls.io/plugCubed/plugCubed-website
+[crowdin-badge]: https://d322cqt584bo4o.cloudfront.net/plugcubed-website/localized.png
+[crowdin-url]: https://crowdin.com/project/plugcubed-website
+[david-badge]: https://img.shields.io/david/plugcubed/plugCubed-Website.svg
+[david-url]: https://david-dm.org/plugcubed/plugCubed-Website
+[gratipay-badge]: https://img.shields.io/gratipay/thedark1337.svg
+[gratipay-url]: https://www.gratipay.com/thedark1337/
+[travis-badge]: https://img.shields.io/travis/plugCubed/plugCubed-Website.svg
+[travis-url]: https://travis-ci.org/plugCubed/plugCubed-Website
