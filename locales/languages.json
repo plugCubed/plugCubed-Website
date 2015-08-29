@@ -1,0 +1,38 @@
+{
+    "cs": {
+        "nativeName": "Čeština",
+        "englishName": "Czech"
+    },
+    "en": {
+        "nativeName": "English",
+        "englishName": "English"
+    },
+    "es": {
+        "nativeName": "Spanish",
+        "englishName": "Spanish"
+    },
+    "fr": {
+        "nativeName": "Français",
+        "englishName": "French"
+    },
+    "hr": {
+        "nativeName": "Hrvatski",
+        "englishName": "Croatian"
+    },
+    "ms": {
+        "nativeName": "Bahasa Melayu",
+        "englishName": "Malay"
+    },
+    "sl": {
+        "nativeName": "Slovenščina",
+        "englishName": "Slovenian"
+    },
+    "tr": {
+        "nativeName": "Türkçe",
+        "englishName": "Turkish"
+    },
+    "zh": {
+        "nativeName": " 繁體中文",
+        "englishName": "Chinese Traditional"
+    }
+}
