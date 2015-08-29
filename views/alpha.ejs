@@ -1,56 +1,64 @@
-        <!-- ABOUT PAGE : begin -->
-        <div class="about-page">
+<!-- ABOUT PAGE : begin -->
+<div class="about-page">
 
-            <!-- PAGE TITLE : begin -->
-            <div id="page-title">
-                <div class="container">
-                    <div class="page-title-inner">
-                        <h1><%- i18n.__('global.welcome') %><span><%- i18n.__('global.slogan') %></span></h1>
+    <!-- PAGE TITLE : begin -->
+    <div id="page-title">
+        <div class="container">
+            <div class="page-title-inner">
+                <h1><%- i18n.__('global.welcome') %><span><%- i18n.__('global.slogan') %></span></h1>
+            </div>
+        </div>
+    </div>
+    <!-- PAGE TITLE : end -->
+
+    <!-- PAGE CORE : begin -->
+    <div id="page-core">
+        <div class="container">
+
+            <!-- ABOUT INTRO : begin -->
+            <section class="about-intro">
+                <div class="row">
+                    <div class="col-xs-12 various-content">
+                        <p class="lead"><%- i18n.__('alpha.title') %></p>
+
+                        <p>
+                            <%- i18n.__('alpha.desc') %><br/> <%- i18n.__('alpha.desc2') %>
+                        </p>
+
+                        <p><strong><%- i18n.__('alpha.bugs') %></strong></p>
+
                     </div>
                 </div>
-            </div>
-            <!-- PAGE TITLE : end -->
-
-            <!-- PAGE CORE : begin -->
-            <div id="page-core">
-                <div class="container">
-
-                    <!-- ABOUT INTRO : begin -->
-                    <section class="about-intro">
+                <section>
+                    <div class="cta-message">
                         <div class="row">
-                            <div class="col-xs-12 various-content">
-                                <p class="lead"><%- i18n.__('alpha.title') %></p>
+                            <div class="col-xs-12">
+                                <h2><%- i18n.__('alpha.start') %></h2>
 
-                                <p>
-                                <%- i18n.__('alpha.desc') %><br /> <%- i18n.__('alpha.desc2') %>
-                                </p>
-                                <p><strong><%- i18n.__('alpha.bugs') %></strong></p>
-
+                                <p><%- i18n.__('alpha.usage') %></p>
                             </div>
                         </div>
-                        <section>
-                        <div class="cta-message">
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <h2><%- i18n.__('alpha.start') %></h2>
-                                    <p><%- i18n.__('alpha.usage') %></p>
-                                </div>
+                        <div class="row text-center">
+                            <div class="col-xs-6">
+                                <a class="button color6" style="float: none" onclick="return alert('Drag this button to your bookmarks'),false;" href="javascript:(function(){$.getScript('https://d1rfegul30378.cloudfront.net/alpha/plugCubed.js');}());">plug³ Alpha</a>
                             </div>
-                            <div class="row text-center">
-                                <div class="col-xs-6"><a class="button color6" style="float: none" onclick="return alert('Drag this button to your bookmarks'),false;" href="javascript:(function(){$.getScript('https://d1rfegul30378.cloudfront.net/alpha/plugCubed.js');}());">plug³ Alpha</a></div>
-                                <div class="col-xs-6"><a class="button color6" style="float: none" onclick="return alert('Drag this button to your bookmarks'),false;" href="javascript:(function(){$.getScript('https://d1rfegul30378.cloudfront.net/alpha/plugCubed.min.js');}());">plug³ Alpha min</a></div>
-                            </div>
-                            <br />
-                            <hr>
-                            <br />
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <h2><%- i18n.__('global.bookmark') %></h2>
-                                    <p><%- i18n.__('global.bookmark.desc') %></p>
-                                    <pre>javascript:(function(){$.getScript('https://d1rfegul30378.cloudfront.net/alpha/plugCubed.js');}());</pre>
-                                </div>
+                            <div class="col-xs-6">
+                                <a class="button color6" style="float: none" onclick="return alert('Drag this button to your bookmarks'),false;" href="javascript:(function(){$.getScript('https://d1rfegul30378.cloudfront.net/alpha/plugCubed.min.js');}());">plug³ Alpha min</a>
                             </div>
                         </div>
-                        </section>
-                    </section>
-                    <!-- ABOUT INTRO : end -->
+                        <br/>
+                        <hr>
+                        <br/>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h2><%- i18n.__('global.bookmark') %></h2>
+
+                                <p><%- i18n.__('global.bookmark.desc') %></p>
+                                <pre>javascript:(function(){$.getScript('https://d1rfegul30378.cloudfront.net/alpha/plugCubed.js');}());</pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <!-- ABOUT INTRO : end -->

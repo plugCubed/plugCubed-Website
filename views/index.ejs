@@ -1,48 +1,55 @@
-   <!-- ABOUT PAGE : begin -->
-        <div class="about-page">
+<!-- ABOUT PAGE : begin -->
+<div class="about-page">
 
-            <!-- PAGE TITLE : begin -->
-            <div id="page-title">
-                <div class="container">
-                    <div class="page-title-inner">
-                        <h1><%- i18n.__('global.welcome') %><span><%- i18n.__('global.slogan') %></span></h1>
+    <!-- PAGE TITLE : begin -->
+    <div id="page-title">
+        <div class="container">
+            <div class="page-title-inner">
+                <h1><%- i18n.__('global.welcome') %><span><%- i18n.__('global.slogan') %></span></h1>
+            </div>
+        </div>
+    </div>
+    <!-- PAGE TITLE : end -->
+
+    <!-- PAGE CORE : begin -->
+    <div id="page-core">
+        <div class="container">
+
+            <!-- ABOUT INTRO : begin -->
+            <section class="about-intro">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 various-content">
+                        <p class="lead"><%- i18n.__('global.quickSetup') %></p>
+
+                        <p><%- i18n.__('global.quickSetDesc') %></p>
+                        <ul>
+                            <li><%- i18n.__('global.quickSetP1.A') %>
+                                <a href="https://plug.dj/" target="_blank">plug.dj</p></a><%- i18n.__('global.quickSetP1.B') %></p>
+                            </li>
+                            <li><%- i18n.__('global.quickSetP2') %>
+                                <a href="https://plug.dj/" target="_blank">plug.dj</a>.
+                            </li>
+                            <li><%- i18n.__('global.quickSetP3') %>
+                                <a href="https://plug.dj/" target="_blank">plug.dj</a>.
+                            </li>
+                        </ul>
+                        <p class="lead"><%- i18n.__('global.compat') %></p>
+
+                        <p><%- i18n.__('global.compat.info') %></p>
+                    </div>
+                    <div class="col-xs-12 col-sm-offset-    3 col-sm-6">
+                        <img src="/img/screenshot_small.png" alt="Small Screenshot" class="img-thumbnail">
                     </div>
                 </div>
-            </div>
-            <!-- PAGE TITLE : end -->
+            </section>
+            <!-- ABOUT INTRO : end -->
 
-            <!-- PAGE CORE : begin -->
-            <div id="page-core">
-                <div class="container">
-
-                    <!-- ABOUT INTRO : begin -->
-                    <section class="about-intro">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-6 various-content">
-                                <p class="lead"><%- i18n.__('global.quickSetup') %></p>
-                                <p><%- i18n.__('global.quickSetDesc') %></p>
-                                <ul>
-                                <li><%- i18n.__('global.quickSetP1.A') %><a href="https://plug.dj/" target="_blank">plug.dj</p></a><%- i18n.__('global.quickSetP1.B') %></p>
-                                </li>
-                                <li><%- i18n.__('global.quickSetP2') %><a href="https://plug.dj/" target="_blank">plug.dj</a>.</li>
-                                <li><%- i18n.__('global.quickSetP3') %><a href="https://plug.dj/" target="_blank">plug.dj</a>.</li>
-                                </ul>
-                                <p class="lead"><%- i18n.__('global.compat') %></p>
-                                <p><%- i18n.__('global.compat.info') %></p>
-                            </div>
-                            <div class="col-xs-12 col-sm-offset-    3 col-sm-6">
-                                <img src="/img/screenshot_small.png" alt="Small Screenshot" class="img-thumbnail">
-                            </div>
+            <section class="video">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-offset-3 col-sm-6" class="center-block">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="//www.youtube-nocookie.com/embed/trR2SEbGa2A?rel=0" frameborder="0" allowfullscreen></iframe>
                         </div>
-                    </section>
-                    <!-- ABOUT INTRO : end -->
-
-                    <section class="video">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-offset-3 col-sm-6" class="center-block">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item" src="//www.youtube-nocookie.com/embed/trR2SEbGa2A?rel=0" frameborder="0" allowfullscreen></iframe>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                    </div>
+                </div>
+            </section>
