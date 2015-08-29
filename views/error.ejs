@@ -1,0 +1,33 @@
+<!-- ABOUT PAGE : begin -->
+<div class="about-page">
+
+    <!-- PAGE TITLE : begin -->
+    <div id="page-title">
+        <div class="container">
+            <div class="page-title-inner">
+                <h1><%- code %> - <%- error %></h1>
+            </div>
+        </div>
+    </div>
+    <!-- PAGE TITLE : end -->
+
+    <!-- PAGE CORE : begin -->
+    <div id="page-core">
+        <div class="container">
+
+            <!-- ABOUT INTRO : begin -->
+            <section class="about-intro">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <% if (code === 404) { %>
+                        <p class="lead">The Requested Page </p>
+
+                        <p>
+                            <%- url %> was not found
+                        </p>
+                        <% } else { %>
+                        <% } %>
+                    </div>
+                </div>
+            </section>
+            <!-- ABOUT INTRO : end -->
