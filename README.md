@@ -15,18 +15,10 @@ This is the repository for plug&#179;'s website. We are currently using [KoaJS](
 * [Sam "Henchman" Mills](https://github.com/Hunchmun)
 * [Alex "Thedark1337" Pham](https://github.com/thedark1337)
 
-### Testing
-
-We utilize [Mocha](http://mochajs.org/) & [Chai](http://chaijs.com/) with [Supertest](https://npmjs.com/package/supertest) and [ESLint](https://eslint.org) to provide testing.
-
-For Testing please run `NODE_ENV=test npm install` and `npm test`.
-
 ### Contributions
 
 * We welcome all contributions to this project.
-* Please make sure it follows the same codestyle as it currently is.
-* We utilize [JSPM](https://jspm.io) as our frontend package manager and included a postinstall to install and bundle dependencies upon npm install.
-**NOTE: ** If JSPM doesn't bundle due to wd error from npm, please use ` npm install --unsafe-perm `
+* Please see our [Contributing Guide](./CONTRIBUTING.md) for steps on how to contribute.
 
 ### Translation
 
@@ -53,7 +45,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see http://www.gnu.org/licenses/.
 
 [coverage-badge]: https://img.shields.io/coveralls/plugCubed/plugCubed-Website.svg
-[coverage-url]: https://coveralls.io/plugCubed/plugCubed-website
+[coverage-url]: https://coveralls.io/github/plugCubed/plugCubed-Website
 [crowdin-badge]: https://d322cqt584bo4o.cloudfront.net/plugcubed-website/localized.png
 [crowdin-url]: https://crowdin.com/project/plugcubed-website
 [david-badge]: https://img.shields.io/david/plugcubed/plugCubed-Website.svg
