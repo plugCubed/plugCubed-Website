@@ -29,7 +29,7 @@ locale(app);
 app.use(/** @this Koa  */ function *(next) {
     let url = this.path.replace('/', '').toLowerCase();
     if (url === '') url = 'index';
-    const title = `${url.charAt(0).toUpperCase()}${url.slice(1)}`;
+    const title = url.charAt(0).toUpperCase() + url.slice(1);
     this.state.he = he;
     this.state.i18n = this.i18n;
     this.state.locale = this.cookies.get('locale');
