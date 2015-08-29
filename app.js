@@ -39,7 +39,7 @@ app.use(/** @this Koa  */ function *(next) {
         const lang = langMap[this.state.langs[i]];
         /* istanbul ignore next: Not possible to test yet.*/
         if (lang == null) continue;
-        this.state.languages.push(`${lang.nativeName} / ${lang.englishName}`);
+        this.state.languages.push(lang.nativeName + ' / ' + lang.englishName);
     }
     this.state.moment = moment;
     this.state.page = url;
@@ -88,5 +88,5 @@ app.use(serveStatic(path.join(__dirname, 'public'), {
 app.name = 'p3Site';
 /* istanbul ignore next: Not needed to be tested, just logs info */
 app.listen(process.env.PORT || 7001, function() {
-    logger('info', 'Web', `${chalk.cyan('Started:')} ${packInfo.name} ${chalk.cyan('Version:')} ${packInfo.version}`);
+    logger('info', 'Web', chalk.cyan('Started: ') + packInfo.name + chalk.cyan(' Version: ') + packInfo.version);
 });
