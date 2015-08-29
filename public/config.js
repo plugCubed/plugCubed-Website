@@ -18,7 +18,7 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.20",
     "bootstrap": "github:twbs/bootstrap@3.3.5",
     "clean-css": "npm:clean-css@3.3.8",
-    "core-js": "npm:core-js@1.0.1",
+    "core-js": "npm:core-js@1.1.0",
     "css": "github:systemjs/plugin-css@0.1.13",
     "font-awesome": "npm:font-awesome@4.4.0",
     "jquery": "github:components/jquery@2.1.4",
@@ -104,7 +104,7 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
-    "npm:core-js@1.0.1": {
+    "npm:core-js@1.1.0": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "process": "github:jspm/nodelibs-process@0.1.1",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
