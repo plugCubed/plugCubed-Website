@@ -28,3 +28,6 @@ jspm_packages
 
 #Scripts
 public/scripts
+
+#Config
+config.json
