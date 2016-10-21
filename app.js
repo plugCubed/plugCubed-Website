@@ -31,8 +31,6 @@ if (process.env.NODE_ENV !== 'test') {
     app.use(koaLogger());
 }
 
-
-
 locale(app);
 
 app.use(
