@@ -38,7 +38,6 @@
     "url": "^0.11.0"
   },
   "devDependencies": {
-    "coveralls": "^2.11.14",
     "eslint-config-thedark1337": "^3.0.0",
     "is-ci": "^1.0.8",
     "istanbul": "^0.4.5",
@@ -90,7 +89,6 @@
   "private": true,
   "scripts": {
     "build": "jspm bundle-sfx js/bundle.orig.js public/js/bundle.js --minify && jspm bundle-sfx js/mackbethTheme.orig.js public/js/mackbethTheme.js --minify",
-    "coverage": "NODE_ENV=test istanbul cover _mocha -- -R mocha-lcov-reporter && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
     "postinstall": "[ \"$NODE_ENV\" != test ] && jspm install && jspm bundle-sfx js/bundle.orig.js public/js/bundle.js --minify && jspm bundle-sfx js/mackbethTheme.orig.js public/js/mackbethTheme.js --minify || exit 0",
     "start": "node index.js",
     "test": "export NODE_ENV=test || set NODE_ENV=test && mocha"
