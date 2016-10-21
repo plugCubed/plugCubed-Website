@@ -179,6 +179,20 @@ describe('GET /features', () => {
     });
 });
 
+describe('GET /goodbye', () => {
+    it('Should return 200 Status', (done) => {
+        request(server)
+            .get('/goodbye')
+            .expect(200, done);
+    });
+
+    it('Should be content type of text/html and charset of UTF-8', (done) => {
+        request(server)
+            .get('/features')
+            .expect('Content-Type', 'text/html; charset=utf-8', done);
+    });
+});
+
 describe('GET /install', () => {
     it('Should return 200 Status', (done) => {
         request(server)

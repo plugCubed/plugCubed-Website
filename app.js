@@ -99,6 +99,7 @@ app.use(require('koa-file-server')({
 
 app.name = 'p3Site';
 
+/* istanbul ignore next: This is only to disable sentry when testing. */
 if (process.env.NODE_ENV !== 'test') {
     const raven = require('raven');
     const config = require('./config.json');
