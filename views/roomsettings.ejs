@@ -1,0 +1,438 @@
+<!-- ABOUT PAGE : begin -->
+<div class="about-page">
+    <!-- PAGE TITLE : begin -->
+    <div id="page-title">
+        <div class="container">
+            <div class="page-title-inner">
+                <h1><%- i18n.__('roomsettings.title') %><span><%- i18n.__('roomsettings.desc') %></span></h1>
+            </div>
+        </div>
+    </div>
+    <!-- PAGE TITLE : end -->
+    <!-- PAGE CORE : begin -->
+    <div id="page-core">
+        <div class="container-fluid">
+            <!-- ABOUT INTRO : begin -->
+            <section class="about-intro">
+                <section>
+                    <div class="row">
+                        <nav class="col-xs-3 bs-docs-sidebar scrollspy">
+                            <ul id="sidebar" class="nav nav-stacked fixed">
+                                <li>
+                                    <a href="#setup"><%- i18n.__('roomsettings.setup.title') %></a>
+                                </li>
+                                <li>
+                                    <a href="#roomSettings"><%- i18n.__('roomsettings.rules.title') %></a>
+                                    <ul class="nav nav-stacked">
+                                        <li><a href="#roomSettingsSub1"><%- i18n.__('roomsettings.menu.author') %></a></li>
+                                        <li><a href="#roomSettingsSub2"><%- i18n.__('roomsettings.menu.colors') %></a></li>
+                                        <li><a href="#roomSettingsSub3">CSS</a></li>
+                                        <li><a href="#roomSettingsSub4"><%- i18n.__('roomsettings.menu.images') %></a></li>
+                                        <li><a href="#roomSettingsSub5"><%- i18n.__('roomsettings.menu.rules') %></a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#template"><%- i18n.__('roomsettings.menu.template') %></a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="col-xs-9">
+                            <section id="setup" class="group">
+                                <h3><%- i18n.__('roomsettings.setup.title') %></h3>
+                                <hr>
+                                <br>
+                                <p>
+                                    <%- i18n.__('roomsettings.setup.desc') %>
+                                </p>
+                                <code>@p3=https://example.com/rs.json</code>
+                                <p>
+                                    <br>
+                                    <%- i18n.__('roomsettings.hosting') %>: <a href="https://rss.plugcubed.net">plug&#179; Room Settings Host</a>
+                                    <br>
+                                    <%- i18n.__('roomsettings.setup.desc2') %>
+                                </p>
+                                <h3>Nginx: </h3>
+                                <br>
+                                <pre>
+                                    <code class="language-nginx">
+                                        add_header   Access-Control-Allow-Origin 'https://plug.dj';
+                                        //or
+                                        add_header   Access-Control-Allow-Origin '*';
+                                    </code>
+                                </pre>
+                                <br>
+                                <h3>Apache: </h3>
+                                <br>
+                                <pre>
+                                    <code class="language-apacheconf">
+                                        Header set Access-Control-Allow-Origin "https://plug.dj"
+                                        //or
+                                        Header set Access-Control-Allow-Origin "*"
+                                </code>
+                                </pre>
+                            </section>
+                            <section id="roomSettings" class="group">
+                                <div id="roomSettingsSub1" class="subgroup">
+                                    <h3><%- i18n.__('roomsettings.rules.title') %></h3>
+                                    <br>
+                                    <div class="list-group">
+                                        <div class="list-group-item">
+                                            <h4 class="list-group-item-heading"><%- i18n.__('roomsettings.menu.author') %></h4>
+                                            <p class="list-group-item-text"><%- i18n.__('roomsettings.rules.author.desc') %> <%- i18n.__('roomsettings.rules.default.string') %></p>
+                                            <p class="list-group-item-text">
+                                                <pre>
+                                                        <code class="language-json">
+                                                            {
+                                                                "author": "TheDark1337"
+                                                            }
+                                                        </code>
+                                                    </pre>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="roomSettingsSub2" class="subgroup">
+                                    <h3><%- i18n.__('roomsettings.menu.colors') %></h3>
+                                    <br>
+                                    <div class="list-group">
+                                        <div class="list-group-item">
+                                            <h4 class="list-group-item-heading">colors.background</h4>
+                                            <p class="list-group-item-text"><%- i18n.__('roomsettings.rules.colors.background.desc') %>. <%- i18n.__('roomsettings.rules.default.string') %></p>
+                                            <p class="list-group-item-text">
+                                                <pre>
+                                                        <code class="language-json">
+                                                            {
+                                                                "colors": {
+                                                                    "background": "FF0000"
+                                                                }
+                                                            }
+                                                        </code>
+                                                    </pre>
+                                            </p>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <h4 class="list-group-item-heading">colors.footer</h4>
+                                            <p class="list-group-item-text"><%- i18n.__('roomsettings.rules.colors.footer.desc') %>. <%- i18n.__('roomsettings.rules.default.string') %></p>
+                                            <p class="list-group-item-text">
+                                                <pre>
+                                                        <code class="language-json">
+                                                            {
+                                                                "colors": {
+                                                                    "footer": "FF0000"
+                                                                }
+                                                            }
+                                                        </code>
+                                                    </pre>
+                                            </p>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <h4 class="list-group-item-heading">colors.header</h4>
+                                            <p class="list-group-item-text"><%- i18n.__('roomsettings.rules.colors.header.desc') %>. <%- i18n.__('roomsettings.rules.default.string') %></p>
+                                            <p class="list-group-item-text">
+                                                <pre>
+                                                        <code class="language-json">
+                                                            {
+                                                                "colors": {
+                                                                    "header": "FF0000"
+                                                                }
+                                                            }
+                                                        </code>
+                                                    </pre>
+                                            </p>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <h4 class="list-group-item-heading">colors.chat.*</h4>
+                                            <p class="list-group-item-text"><%- i18n.__('roomsettings.rules.colors.ranks.desc') %>. <%- i18n.__('roomsettings.rules.default.object') %></p>
+                                            <p class="list-group-item-text">
+                                                <pre>
+                                                        <code class="language-json">
+                                                            {
+                                                                "colors": {
+                                                                    "chat": {
+                                                                        "admin": "FF0000",
+                                                                        "ambassador": "FFFF00",
+                                                                        "bouncer": "FFFFFF",
+                                                                        "cohost": "00FF00",
+                                                                        "residentdj": "00FFFF",
+                                                                        "host": "0000FF",
+                                                                        "manager": "000000"
+                                                                    }
+                                                                }
+                                                            }
+                                                        </code>
+                                                    </pre>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="roomSettingsSub3" class="subgroup">
+                                    <h3>CSS</h3>
+                                    <br>
+                                    <div class="list-group">
+                                        <div class="list-group-item">
+                                            <h4 class="list-group-item-heading">css.font</h4>
+                                            <p class="list-group-item-text"><%- i18n.__('roomsettings.rules.css.font.desc') %>. <%- i18n.__('roomsettings.rules.default.array') %></p>
+                                            <p class="list-group-item-text">
+                                                <pre>
+                                                        <code class="language-json">
+                                                            {
+                                                                "css": {
+                                                                    "font": [{
+                                                                        "name": "Font 1 Name",
+                                                                        "url": "Url to font"
+                                                                    }, {
+                                                                        "name": "Font 2 Name",
+                                                                        "url": {
+                                                                            "ttf": "Url 1 to font",
+                                                                            "woff": "Url 2 to font"
+                                                                        }
+                                                                    }]
+                                                                }
+                                                            }
+                                                        </code>
+                                                    </pre>
+                                            </p>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <h4 class="list-group-item-heading">css.import</h4>
+                                            <p class="list-group-item-text"><%- i18n.__('roomsettings.rules.css.import.desc') %>. <%- i18n.__('roomsettings.rules.default.array') %></p>
+                                            <p class="list-group-item-text">
+                                                <pre>
+                                                        <code class="language-json">
+                                                            {
+                                                                "css": {
+                                                                    "import":[
+                                                                        "https:\/\/example.com\/example1.css",
+                                                                        "https:\/\/example.com\/example2.css"
+                                                                    ]
+                                                                }
+                                                            }
+                                                        </code>
+                                                    </pre>
+                                            </p>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <h4 class="list-group-item-heading">css.rule</h4>
+                                            <p class="list-group-item-text"><%- i18n.__('roomsettings.rules.css.rule.desc') %>. <%- i18n.__('roomsettings.rules.default.object') %></p>
+                                            <p class="list-group-item-text">
+                                                <pre>
+                                                        <code class="language-json">
+                                                            {
+                                                                "css": {
+                                                                    "rule": {
+                                                                        "#room-name": {
+                                                                            "color": "blue",
+                                                                            "font-variant": "small-caps"
+                                                                        },
+                                                                        "#now-playing-media": {
+                                                                            "font-variant": "small-caps"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        </code>
+                                                    </pre>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="roomSettingsSub4" class="subgroup">
+                                    <h3><%- i18n.__('roomsettings.menu.images') %></h3>
+                                    <br>
+                                    <div class="list-group">
+                                        <div class="list-group-item">
+                                            <h4 class="list-group-item-heading">images.background</h4>
+                                            <p class="list-group-item-text"><%- i18n.__('roomsettings.rules.images.background.desc') %>. <%- i18n.__('roomsettings.rules.default.string') %></p>
+                                            <p class="list-group-item-text">
+                                                <pre>
+                                                        <code class="language-json">
+                                                            {
+                                                                "images": {
+                                                                    "background": "https:\/\/example.com\/background.png"
+                                                                }
+                                                            }
+                                                        </code>
+                                                    </pre>
+                                            </p>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <h4 class="list-group-item-heading">images.booth</h4>
+                                            <p class="list-group-item-text"><%- i18n.__('roomsettings.rules.images.booth.desc') %> (Max 300px x 100px). <%- i18n.__('roomsettings.rules.default.string') %></p>
+                                            <p class="list-group-item-text">
+                                                <pre>
+                                                        <code class="language-json">
+                                                            {
+                                                                "images": {
+                                                                    "booth": "https:\/\/example.com\/booth.png"
+                                                                }
+                                                            }
+                                                        </code>
+                                                    </pre>
+                                            </p>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <h4 class="list-group-item-heading">images.icons.*</h4>
+                                            <p class="list-group-item-text"><%- i18n.__('roomsettings.rules.images.icons.desc') %>. <%- i18n.__('roomsettings.rules.default.object') %></p>
+                                            <p class="list-group-item-text">
+                                                <pre>
+                                                        <code class="language-json">
+                                                            {
+                                                                "images": {
+                                                                    "icons": {
+                                                                        "admin": "https:\/\/example.com\/admin.png",
+                                                                        "ambassador": "https:\/\/example.com\/ambassador.png",
+                                                                        "bouncer": "https:\/\/example.com\/bouncer.png",
+                                                                        "cohost": "https:\/\/example.com\/cohost.png",
+                                                                        "residentdj": "https:\/\/example.com\/residentdj.png",
+                                                                        "host": "https:\/\/example.com\/host.png",
+                                                                        "manager": "https:\/\/example.com\/manager.png"
+                                                                    }
+                                                                }
+                                                            }
+                                                        </code>
+                                                    </pre>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="roomSettingsSub5" class="subgroup">
+                                    <h3><%- i18n.__('roomsettings.menu.rules') %></h3>
+                                    <br>
+                                    <div class="list-group">
+                                        <div class="list-group-item">
+                                            <h4 class="list-group-item-heading">rules.allowAutojoin</h4>
+                                            <p class="list-group-item-text"><%- i18n.__('roomsettings.rules.p3rules.autojoin.desc') %>. <%- i18n.__('roomsettings.rules.default.true') %></p>
+                                            <p class="list-group-item-text">
+                                                <pre>
+                                                        <code class="language-json">
+                                                            {
+                                                                "rules": {
+                                                                    "allowAutojoin": true
+                                                                }
+                                                            }
+                                                        </code>
+                                                    </pre>
+                                            </p>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <h4 class="list-group-item-heading">rules.allowAutorespond</h4>
+                                            <p class="list-group-item-text"><%- i18n.__('roomsettings.rules.p3rules.autorespond.desc') %> . <%- i18n.__('roomsettings.rules.default.true') %></p>
+                                            <p class="list-group-item-text">
+                                                <pre>
+                                                        <code class="language-json">
+                                                            {
+                                                                "rules": {
+                                                                    "allowAutorespond": true
+                                                                }
+                                                            }
+                                                        </code>
+                                                    </pre>
+                                            </p>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <h4 class="list-group-item-heading">rules.allowAutowoot</h4>
+                                            <p class="list-group-item-text"><%- i18n.__('roomsettings.rules.p3rules.autowoot.desc') %>. <%- i18n.__('roomsettings.rules.default.true') %></p>
+                                            <p class="list-group-item-text">
+                                                <pre>
+                                                        <code class="language-json">
+                                                            {
+                                                                "rules": {
+                                                                    "allowAutowoot": true
+                                                                }
+                                                            }
+                                                        </code>
+                                                    </pre>
+                                            </p>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <h4 class="list-group-item-heading">rules.allowEmotes</h4>
+                                            <p class="list-group-item-text"><%- i18n.__('roomsettings.rules.p3rules.emotes.desc') %> (BetterTTV, FrankerFFZ, Tasty, Twitch, Twitch Subscriber). <%- i18n.__('roomsettings.rules.default.true') %></p>
+                                            <p class="list-group-item-text">
+                                                <pre>
+                                                        <code class="language-json">
+                                                            {
+                                                                "rules": {
+                                                                    "allowEmotes": true
+                                                                }
+                                                            }
+                                                        </code>
+                                                    </pre>
+                                            </p>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <h4 class="list-group-item-heading">rules.allowShowingMehs</h4>
+                                            <p class="list-group-item-text"> <%- i18n.__('roomsettings.rules.p3rules.mehs.desc') %>. <%- i18n.__('roomsettings.rules.default.true') %></p>
+                                            <p class="list-group-item-text">
+                                                <pre>
+                                                        <code class="language-json">
+                                                            {
+                                                                "rules": {
+                                                                    "allowShowingMehs": true
+                                                                }
+                                                            }
+                                                        </code>
+                                                    </pre>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="template" class="group">
+                                <h3><%- i18n.__('roomsettings.example.title') %></h3>
+                                <hr>
+                                <p>
+                                    <%- i18n.__('roomsettings.example.desc') %>
+                                </p>
+                                <pre>
+                                    <code class="language-json">
+                                        {
+                                            "author": "",
+                                            "colors": {
+                                            "background": "",
+                                            "chat": {
+                                                "admin": "",
+                                                "ambassador": "",
+                                                "bouncer": "",
+                                                "cohost": "",
+                                                "residentdj": "",
+                                                "host": "",
+                                                "manager": ""
+                                            },
+                                                "footer": "",
+                                                "header": ""
+                                            },
+                                            "css": {
+                                                "font": [],
+                                                "import": [],
+                                                "rule": {}
+                                            },
+                                            "images": {
+                                                "background": "",
+                                                "booth": "",
+                                                "icons": {
+                                                    "admin": "",
+                                                    "ambassador": "",
+                                                    "bouncer": "",
+                                                    "cohost": "",
+                                                    "residentdj": "",
+                                                    "host": "",
+                                                    "manager": ""
+                                                },
+                                                "playback": ""
+                                            },
+                                            "rules": {
+                                                "allowAutojoin": "true",
+                                                "allowAutorespond": "true",
+                                                "allowAutowoot": "true",
+                                                "allowEmotes": "true",
+                                                "allowShowingMehs": "true"
+                                            }
+                                    }
+                                    </code>
+                                </pre>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <!-- ABOUT INTRO : end -->

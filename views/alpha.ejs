@@ -38,12 +38,13 @@
                                 <p><%- i18n.__('alpha.usage') %></p>
                             </div>
                         </div>
-                        <div class="row text-center">
-                            <div class="col-xs-6">
-                                <a class="button color6" style="float: none" onclick="return alert('Drag this button to your bookmarks'),false;" href="javascript:(function(){$.getScript('https://d1rfegul30378.cloudfront.net/alpha/plugCubed.js');}());">plug³ Alpha</a>
-                            </div>
-                            <div class="col-xs-6">
-                                <a class="button color6" style="float: none" onclick="return alert('Drag this button to your bookmarks'),false;" href="javascript:(function(){$.getScript('https://d1rfegul30378.cloudfront.net/alpha/plugCubed.min.js');}());">plug³ Alpha min</a>
+                        <br>
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <div class="btn-group" role="group" aria-label="plug&#179; Bookmarks">
+                                    <a class="button color6" style="float: none" onclick="return alert('Drag this button to your bookmarks'),false;" href="javascript:(function(){$.getScript('https://plugcubed.net/scripts/alpha/plugCubed.js');}());">plug³ Alpha</a>
+                                    <a class="button color6" style="float: none" onclick="return alert('Drag this button to your bookmarks'),false;" href="javascript:(function(){$.getScript('https://plugcubed.net/scripts/alpha/plugCubed.min.js');}());">plug³ Alpha min</a>
+                                </div>
                             </div>
                         </div>
                         <br/>
@@ -55,7 +56,9 @@
                                 <h2><%- i18n.__('global.bookmark') %></h2>
 
                                 <p><%- i18n.__('global.bookmark.desc') %></p>
-                                <pre>javascript:(function(){$.getScript('https://d1rfegul30378.cloudfront.net/alpha/plugCubed.js');}());</pre>
+                            <div class="text-center">
+                                <pre><code class="language-javascript">javascript:(function(){$.getScript('https://plugcubed.net/scripts/alpha/plugCubed.js');}());</code></pre>
+                            </div>
                             </div>
                         </div>
                     </div>
