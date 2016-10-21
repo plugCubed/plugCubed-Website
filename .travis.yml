@@ -5,11 +5,8 @@ node_js:
   - '5'
   - '6'
 before_install:
- - npm install -g npm@latest
-install:
- - npm install -g codecov
+  - npm install -g npm@latest
 env:
-- NODE_ENV=test
-script:
-  - istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec
-  - codecov
+  - NODE_ENV=test
+after_script:
+  - npm run-script coverage
