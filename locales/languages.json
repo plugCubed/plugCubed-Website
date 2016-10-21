@@ -8,8 +8,12 @@
         "englishName": "English"
     },
     "es": {
-        "nativeName": "Spanish",
+        "nativeName": "Español",
         "englishName": "Spanish"
+    },
+    "et": {
+        "nativeName": "Eesti Keel",
+        "englishName": "Estonian"
     },
     "fr": {
         "nativeName": "Français",
@@ -19,9 +23,21 @@
         "nativeName": "Hrvatski",
         "englishName": "Croatian"
     },
+    "it": {
+        "nativeName": "Italiano",
+        "englishName": "Italian"
+    },
     "ms": {
         "nativeName": "Bahasa Melayu",
         "englishName": "Malay"
+    },
+    "pl": {
+        "nativeName": "Język Polski",
+        "englishName": "Polish"
+    },
+    "pt": {
+        "nativeName": "Português",
+        "englishName": "Portuguese"
     },
     "sl": {
         "nativeName": "Slovenščina",
