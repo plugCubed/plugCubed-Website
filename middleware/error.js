@@ -1,7 +1,8 @@
 'use strict';
 
 const http = require('http');
-module.exports = function *(next) {
+
+module.exports = function *errorHandler(next) {
     try {
         yield next;
 
@@ -18,6 +19,7 @@ module.exports = function *(next) {
                 this.body = {
                     error: http.STATUS_CODES[this.status]
                 };
+                yield next;
                 break;
             case 'html':
                 yield this.render('error', {
@@ -28,9 +30,10 @@ module.exports = function *(next) {
                 break;
             case 'text':
                 this.body = http.STATUS_CODES[this.status];
+                yield next;
                 break;
             default:
-                this.throw(406);
+                yield this.throw(406);
         }
     }
 };
