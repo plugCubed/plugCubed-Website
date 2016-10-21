@@ -1,0 +1,10 @@
+{
+    "extends": "thedark1337",
+    "parserOptions": {
+        "ecmaVersion": 6
+    },
+    "rules": {
+        "generator-star-spacing": [2, {"before": true, "after": false}]
+
+    }
+}

@@ -1,14 +1,17 @@
 'use strict';
 
-var lint = require('mocha-eslint');
-
-var paths = [
+const lint = require('mocha-eslint');
+const isCI = require('is-ci');
+const paths = [
     'lib/**/*.js',
     'middleware/**/*.js',
     'app.js',
-    'routes/**/*.js'
+    'routes/**/*.js',
+    'test/*.js'
 ];
 
-var options = {};
+const options = {
+    alwaysWarn: isCI
+};
 
 lint(paths, options);
