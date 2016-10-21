@@ -1,4 +1,4 @@
-#plug&#179; Website (plugCubed Website) [![CrowdIn][crowdin-badge]][crowdin-url] [![Build Status][travis-badge]][travis-url] [![Code Coverage][coverage-badge]][coverage-url] [![David][david-badge]][david-url] [![Gratipay][gratipay-badge]][gratipay-url]
+#plug&#179; Website (plugCubed Website) [![CrowdIn][crowdin-badge]][crowdin-url] [![Build Status][travis-badge]][travis-url] [![Code Coverage][coverage-badge]][coverage-url] [![David][david-badge]][david-url] [![Slack][slack-badge]][slack-url]
 
 ### Information / Installation
 This is the repository for plug&#179;'s website. We are currently using [KoaJS](https://github.com/koajs/koa) as the server.
@@ -24,12 +24,8 @@ This is the repository for plug&#179;'s website. We are currently using [KoaJS](
 
 Please use  [CrowdIn][crowdin-url] for any translations.
 
-### Support
-
-We have a [Slack](https://plugcubed.slack.com/) channel we use to communicate. Please email [1337alexpham@gmail.com](mailto:1337alexpham@gmail.com?subject=Slack&nbsp;Plug3) if you'd like to be added
-
 ### License
-Copyright &copy; 2015 The plug&#179; Team and other contributors
+Copyright &copy; 2015 - 2016 The plug&#179; Team and other contributors
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -54,3 +50,5 @@ along with this program.  If not, see http://www.gnu.org/licenses/.
 [gratipay-url]: https://www.gratipay.com/thedark1337/
 [travis-badge]: https://img.shields.io/travis/plugCubed/plugCubed-Website.svg
 [travis-url]: https://travis-ci.org/plugCubed/plugCubed-Website
+[slack-badge]: https://slack.plugcubed.net/badge.svg
+[slack-url]: https://slack.plugcubed.net
