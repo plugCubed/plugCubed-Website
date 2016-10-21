@@ -23,6 +23,9 @@
             <loc>https://plugcubed.net/features</loc>
         </url>
         <url>
+            <loc>https://plugcubed.net/goodbye</loc>
+        </url>
+        <url>
             <loc>https://plugcubed.net/install</loc>
         </url>
         <url>
@@ -30,6 +33,9 @@
         </url>
         <url>
             <loc>https://plugcubed.net/readme</loc>
+        </url>
+        <url>
+            <loc>https://plugcubed.net/roomsettings</loc>
         </url>
         <url>
             <loc>https://plugcubed.net/translate</loc>

@@ -20,21 +20,20 @@
     6.) Main Slider
     7.) Homepage
     8.) Page Types
-    9.) Widgets
-    10.) Window Resize
-    11.) Initialize Page
+    9.) Window Resize
+    10.) Initialize Page
 
 ----------------------------------------------------------------------------- */
 
-(function($){
+(function($) {
     "use strict";
-    var ThePage = function(){
+    var ThePage = function() {
 
-/* ------------------------------------------------------------------
+        /* ------------------------------------------------------------------
 
-        1.) GENERAL VARIABLES
+                1.) GENERAL VARIABLES
 
------------------------------------------------------------------- */
+        ------------------------------------------------------------------ */
 
         /* ----------------------------------
             PAGE VAR
@@ -43,156 +42,64 @@
         var thepage = this;
 
         /* ----------------------------------
-            OLD IE
-        ---------------------------------- */
-
-        var oldIE = ($.support.leadingWhitespace) ? false : true;
-
-        /* ----------------------------------
             SCREEN WIDTH
         ---------------------------------- */
 
-        thepage.get_window_width = function() {
-            var width;
-            // fix for IE
-            if(oldIE) {
-                width = 1199;
-            }
-            else {
-                width = $('#screen-width').css('content');
-                width = width.replace("\"","").replace("\"","").replace("\'","").replace("\'","");
-                if(isNaN(parseInt(width,10))){
-                    $('#screen-width span').each(function(){
-                        width = window.getComputedStyle(this,':before').content;
-                    });
-                    width = width.replace("\"","").replace("\"","").replace("\'","").replace("\'","");
-                }
-            }
-            return width;
+        thepage.getWindowWidth = function() {
+            return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
         };
-        var screen_width = thepage.get_window_width();
+        var screenWidth = thepage.getWindowWidth();
 
+        /* -----------------------------------------------------------------------------
 
-/* -----------------------------------------------------------------------------
+                2.) TYPOGRAPHY
 
-        2.) TYPOGRAPHY
-
------------------------------------------------------------------------------ */
+        ----------------------------------------------------------------------------- */
 
         /* ----------------------------------
             CREATE DEFAULT LISTS
         ---------------------------------- */
 
-        thepage.create_default_lists = function(){
+        thepage.createDefaultLists = function() {
             $('.various-content ul:not(.accordion,.tabs,.tab-content,.check-list,.default-list)').each(function() {
                 $(this).addClass('default-list');
                 $(this).find('> li').prepend('<i class="ico icon-chevron-right"></i>');
             });
         };
-        thepage.create_default_lists();
+        thepage.createDefaultLists();
 
+        /* -----------------------------------------------------------------------------
 
-/* -----------------------------------------------------------------------------
+                3.) COMPONENTS
 
-        3.) COMPONENTS
-
------------------------------------------------------------------------------ */
+        ----------------------------------------------------------------------------- */
 
         /* ----------------------------------
             ACCORDION
         ---------------------------------- */
 
-        thepage.create_accordions = function(){
-            $('.accordion .accordion-item.opened').each(function(){
+        thepage.createAccordions = function() {
+            $('.accordion .accordion-item.opened').each(function() {
                 $(this).removeClass('active');
                 $(this).addClass('opened');
                 $(this).find('.accordion-content').show();
             });
 
-            $('.accordion .accordion-toggle').click(function(){
+            $('.accordion .accordion-toggle').click(function() {
                 var item = $(this).parents('.accordion-item');
                 var item_content = item.find('.accordion-content');
                 item.toggleClass('opened');
-                item_content.slideToggle(300);
+                item_content.slideToggle(275);
             });
 
         };
-        thepage.create_accordions();
-
-        /* ----------------------------------
-            AUDIO PLAYER
-        ---------------------------------- */
-
-        thepage.create_audio_players = function(){
-            $('.audio-player').each(function(){
-
-                var player = $(this);
-                var control = player.find('button.control');
-                var audio = player.find('audio').first();
-                var progressbar = player.find('.progbar');
-
-                /* CONTROL BUTTON */
-
-                control.click(function(){
-
-                    // play
-
-                    if(player.hasClass('paused')){
-                        player.removeClass('paused');
-                        audio.trigger('play');
-                        audio.bind('timeupdate', function(){
-                            var track_length = $(this)[0].duration;
-                            var secs = $(this)[0].currentTime;
-                            var progress = (secs/track_length) * 100;
-                            progressbar.find('div').css('width', progress + "%");
-                        });
-                    }
-
-                    // pause
-
-                    else {
-                        player.addClass('paused');
-                        audio.trigger('pause');
-                    }
-
-                });
-
-                /* SET POSITION */
-
-                progressbar.click(function(e){
-                    var posX = e.pageX - $(this).offset().left;
-                    var width = progressbar.width();
-                    var progress_percentage = (posX / (width / 100));
-                    var duration = audio[0].duration;
-                    var time = Math.floor((duration / 100) * progress_percentage);
-
-                    // set progress
-                    progressbar.find('div').css('width', progress_percentage + "%");
-
-                    // set time
-
-                    audio[0].currentTime = time;
-
-                });
-
-                /* RESET ON AUDIO END */
-
-                audio.bind('ended', function(){
-                    player.addClass('paused');
-                    audio.trigger('pause');
-                    audio.currentTime = 0;
-                    progressbar.find('div').css('width', 0);
-                });
-
-            });
-        };
-        thepage.create_audio_players();
+        thepage.createAccordions();
 
         /* ----------------------------------
             LIST SLIDER
         ---------------------------------- */
 
-        var ListSlider = function(element){
+        var ListSlider = function(element) {
 
             var elem = $(element);
 
@@ -200,25 +107,25 @@
 
             var slider = elem.find('.list-slider-items').first();
             var container = slider.find('> ul').first();
-            var prev_btn = elem.find('.list-slider-nav .prev');
-            var next_btn = elem.find('.list-slider-nav .next');
-            var active_item;
-            var number_of_items = container.find('> li').length;
-            var item_width;
-            var visible_items;
+            var prevBtn = elem.find('.list-slider-nav .prev');
+            var nextBtn = elem.find('.list-slider-nav .next');
+            var activeItem;
+            var numberOfItems = container.find('> li').length;
+            var itemWidth;
+            var visibleItems;
 
             /* SET HEIGHT */
 
             var set_height = function() {
 
                 // get height of highest visible item
-                var max_height = 0;
+                var maxHeight = 0;
                 var i;
-                for(i = active_item; i < active_item + visible_items; i++){
+                for (i = activeItem; i < activeItem + visibleItems; i++) {
                     var height = container.find('> li:eq(' + i + ')').height();
-                    max_height = height > max_height ? height : max_height;
+                    maxHeight = height > maxHeight ? height : maxHeight;
                 }
-                slider.css('height', max_height);
+                slider.css('height', maxHeight);
 
             };
 
@@ -226,14 +133,14 @@
 
             var reset = function() {
 
-                active_item = 0;
-                prev_btn.addClass('disabled');
-                next_btn.removeClass('disabled');
-                item_width = container.find('> li').first().width();
-                visible_items = Math.ceil(slider.width() / item_width);
+                activeItem = 0;
+                prevBtn.addClass('disabled');
+                nextBtn.removeClass('disabled');
+                itemWidth = container.find('> li').first().width();
+                visibleItems = Math.ceil(slider.width() / itemWidth);
                 container.css({
-                    'width' : number_of_items * item_width,
-                    'left' : 0
+                    width: numberOfItems * itemWidth,
+                    left: 0
                 });
                 slider.css('overflow', 'hidden');
                 set_height();
@@ -243,30 +150,30 @@
 
             /* REFRESH */
 
-            this.refresh = function(){
+            this.refresh = function() {
                 reset();
             };
 
             /* NEXT */
 
-            var next = function(){
-                active_item += 1;
-                container.css('left', -(active_item * item_width));
+            var next = function() {
+                activeItem += 1;
+                container.css('left', -(activeItem * itemWidth));
                 set_height();
             };
-            next_btn.click(function(){
-                if(!$(this).hasClass('disabled')){
+            nextBtn.click(function() {
+                if (!$(this).hasClass('disabled')) {
 
                     // slide next
                     next();
 
                     // enable prev button
-                    if(prev_btn.hasClass('disabled')){
-                        prev_btn.removeClass('disabled');
+                    if (prevBtn.hasClass('disabled')) {
+                        prevBtn.removeClass('disabled');
                     }
 
                     // check for disabling next button
-                    if(active_item+visible_items >= number_of_items){
+                    if (activeItem + visibleItems >= numberOfItems) {
                         $(this).addClass('disabled');
                     }
                 }
@@ -274,24 +181,25 @@
 
             /* PREV */
 
-            var prev = function(){
-                active_item -= 1;
-                container.css('left', -(active_item * item_width));
+            var prev = function() {
+                activeItem -= 1;
+                container.css('left', -(activeItem * itemWidth));
                 set_height();
             };
-            prev_btn.click(function(){
-                if(!$(this).hasClass('disabled')){
+
+            prevBtn.click(function() {
+                if (!$(this).hasClass('disabled')) {
 
                     // slide prev
                     prev();
 
                     // enable next button
-                    if(next_btn.hasClass('disabled')){
-                        next_btn.removeClass('disabled');
+                    if (nextBtn.hasClass('disabled')) {
+                        nextBtn.removeClass('disabled');
                     }
 
                     // check for disabling prev button
-                    if(active_item <= 0){
+                    if (activeItem <= 0) {
                         $(this).addClass('disabled');
                     }
                 }
@@ -299,22 +207,26 @@
 
         };
 
-        $.fn.listslider = function(options){
-            return this.each(function(){
+        $.fn.listslider = function(options) {
+            return this.each(function() {
                 var element = $(this);
+
                 // Return early if this element already has a plugin instance
-                if(element.data('listslider')) { return; }
+                if (element.data('listslider')) {
+                    return;
+                }
                 // pass options to plugin constructor
-                var listslider = new ListSlider(this,options);
+                var listslider = new ListSlider(this, options);
+
                 // Store plugin object in this element's data
-                element.data('listslider',listslider);
+                element.data('listslider', listslider);
             });
 
         };
 
         /* INITIALIZE */
 
-        $('.list-slider').each(function(){
+        $('.list-slider').each(function() {
             $('.list-slider').listslider().data('listslider');
         });
 
@@ -322,41 +234,24 @@
             PROGRESS BARS
         ---------------------------------- */
 
-        thepage.create_progressbars = function(){
-            $('.progressbar').each(function(){
+        thepage.createProgressBars = function() {
+            $('.progressbar').each(function() {
                 var inner = $(this).find('.inner');
+
                 inner.append('<span class="percentage">' + $(this).data('percentage') + '</span>');
-                $(this).delay(100).fadeIn(100, function(){
-                    inner.css('width',$(this).data('percentage'));
+                $(this).delay(100).fadeIn(100, function() {
+                    inner.css('width', $(this).data('percentage'));
                 });
             });
         };
-        thepage.create_progressbars();
-
-        /* ----------------------------------
-            PROJECT PREVIEW
-        ---------------------------------- */
-
-        thepage.create_project_previews = function(){
-
-            $('.project-preview .thumb').hover(function(){
-                var self = $(this);
-                self.find('.overlay').stop(true,true);
-                self.addClass('hover');
-            }, function(){
-                var self = $(this);
-                self.removeClass('hover');
-            });
-
-        };
-        thepage.create_project_previews();
+        thepage.createProgressBars();
 
         /* ----------------------------------
             TABS
         ---------------------------------- */
 
-        thepage.create_tabs = function(){
-            $('.tabs .tab').click(function(){
+        thepage.createTabs = function() {
+            $('.tabs .tab').click(function() {
 
                 /* SET ACTIVE TAB */
 
@@ -366,9 +261,10 @@
 
                 /* TOGGLE CONTENT */
 
-                if($(this).parent().next('.tab-content').length > 0){
+                if ($(this).parent().next('.tab-content').length > 0) {
 
                     var content = $(this).parent().next('.tab-content').first();
+
                     content.find('.item:visible').hide();
                     content.find('.item:eq(' + index + ')').show();
 
@@ -376,278 +272,45 @@
 
             });
         };
-        thepage.create_tabs();
+        thepage.createTabs();
 
+        /* -----------------------------------------------------------------------------
 
-/* -----------------------------------------------------------------------------
+                4.) VARIOUS SCRIPTS
 
-        4.) VARIOUS SCRIPTS
-
------------------------------------------------------------------------------ */
-
-        /* ---------------------------------------------------------------------
-            FORM VALIDATION
-        --------------------------------------------------------------------- */
-
-        /* EMAIL REGEX */
-
-        function validate_email(email) {
-            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return re.test(email);
-        }
-
-        /* VALIDATE FIELD */
-
-        thepage.validate_field = function(field){
-
-            var value = field.val();
-            var placeholder = field.data( 'placeholder' );
-            var error_indicator = '<i class="error-ico icon-remove"></i>';
-
-            // CHECK IF EMAIL
-
-            if ( field.hasClass( 'email' ) ) {
-
-                if(value.length < 1 || !validate_email(value)){
-                    field.next('.error-ico').remove();
-                    field.after( error_indicator );
-                    field.addClass( 'error' );
-                    return false;
-                }
-                else {
-                    field.next( '.error-ico' ).fadeOut(300);
-                    field.removeClass( 'error' );
-                    return true;
-                }
-
-            }
-
-            // CHECK IF SELECT
-
-            else if ( field.prop( 'tagName' ).toLowerCase() === 'select' ){
-                if ( value === null ){
-                    field.next( '.error-ico' ).remove();
-                    field.after( error_indicator );
-                    field.addClass( 'error' );
-                    return false;
-                }
-                else {
-                    field.next( '.error-ico' ).fadeOut(300);
-                    field.removeClass( 'error' );
-                    return true;
-                }
-            }
-
-            // CHECK IF OTHER
-
-            else {
-
-                if ( value.length < 1 || value === placeholder ) {
-                    field.next( '.error-ico' ).remove();
-                    field.after( error_indicator );
-                    field.addClass( 'error' );
-                    return false;
-                }
-                else {
-                    field.next( '.error-ico' ).fadeOut(300);
-                    field.removeClass( 'error' );
-                    return true;
-                }
-            }
-
-            return true;
-
-        };
-
-        /* ---------------------------------------------------------------------
-            CONTACT FORM SUBMIT
-        --------------------------------------------------------------------- */
-
-        $( '#contact-form' ).submit(function(e){
-
-            var form = $(this);
-            var form_valid = true;
-            var submit_btn = form.find( '.submit' );
-            e.preventDefault();
-
-            if ( !form.find( '.submit' ).hasClass( 'loading' ) ) {
-
-                // VALIDATE FORM
-
-                form.find( 'input.required, select.required, textarea.required' ).each(function(){
-
-                    form.find( '.alert' ).slideUp(300);
-
-                    // VALIDATE FIELD
-
-                    var field = $(this);
-                    if(!thepage.validate_field(field)){
-                        form_valid = false;
-
-                        // set validation on field change
-                        field.bind('keypress change focus blur mouseenter', function(){
-                            setTimeout(function(){
-                                thepage.validate_field(field);
-                            }, 100);
-                        });
-
-                    }
-
-                });
-
-                // SHOW ERROR MESSAGE IF NOT VALID
-
-                if(!form_valid){
-
-                    var body_offset = $( 'body' ).hasClass( 'fixed-header' ) ? $( 'header' ).height() : 0;
-                    form.find('p.alert.warning.validation').slideDown(300);
-                    $('html, body').animate({
-                        scrollTop: form.offset().top - body_offset - 20
-                    }, 500);
-                    return false;
-
-                }
-
-                // SEND AJAX REQUEST IF VALID
-
-                else {
-
-                    submit_btn.addClass( 'loading' );
-                    submit_btn.attr( 'data-label', submit_btn.text() );
-                    submit_btn.text( submit_btn.data( 'loading-label' ) );
-
-                    // disable inputs with placeholders
-
-                    form.find( '.placeholder' ).attr( 'disabled', 'disabled' );
-
-                    // Ajax request
-
-                    $.ajax({
-                      type: 'POST',
-                      url: form.attr( 'action' ),
-                      data: form.serialize(),
-                      //Wait for a response
-                      success: function( data ){
-
-                        form.find( '.alert.validation' ).hide();
-                        form.prepend( data );
-                        form.find( '.alert.success, .alert.phpvalidation' ).slideDown(300);
-                        submit_btn.removeClass( 'loading' );
-                        submit_btn.text( submit_btn.attr( 'data-label' ) );
-
-                        // reset all inputs and hide form
-
-                        if ( data.indexOf( 'success' ) > 0 ) {
-
-                            form.find( 'input, textarea' ).each( function() {
-                                $(this).val( $(this).data( 'placeholder' ) ).addClass( 'placeholder' );
-                            });
-                            form.find( '.placeholder' ).removeAttr( 'disabled' );
-
-                            form.find( '.form-fields' ).hide();
-
-                        }
-
-                      },
-                      error: function(){
-
-                        form.find( '.alert.validation' ).slideUp(300);
-                        form.find( '.alert.request' ).slideDown(300);
-                        submit_btn.removeClass( 'loading' );
-                        submit_btn.text( submit_btn.attr( 'data-label' ) );
-
-                      }
-                    });
-
-                }
-
-            }
-
-        });
-
-        /* ----------------------------------
-            GET EXTERNAL VIDEO THUMB
-        ---------------------------------- */
-
-        thepage.get_external_video_thumb = function(source,thumb){
-
-            var video_url = source;
-            var video_id;
-            var regExp;
-
-            // YOUTUBE
-            if(video_url.indexOf('youtube') !== -1){
-
-                regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-                var match = video_url.match(regExp);
-                if (match&&match[7].length===11){
-                    video_id = match[7];
-
-                    // GET THUMBNAIL
-                    $.getJSON('http://gdata.youtube.com/feeds/api/videos/' + video_id + '?v=2&alt=jsonc&callback=?', function(json){
-                        thumb.css({
-                            'background-image' : 'url(' + json.data.thumbnail.hqDefault + ')'
-                        });
-                    });
-                }
-
-            }
-            // VIMEO
-            else if(video_url.indexOf('vimeo') !== -1){
-
-                regExp = /video\/(\d+)/;
-                video_id = video_url.match(regExp)[1];
-                if(video_id){
-
-                    // GET THUMBNAIL
-                    $.getJSON('http://www.vimeo.com/api/v2/video/' + video_id + '.json?callback=?', {format: "json"}, function(data) {
-                        thumb.css({
-                            'background-image' : 'url(' + data[0].thumbnail_large + ')'
-                        });
-                    });
-                }
-
-            }
-
-        };
-
-        $('.recent-articles .article.video .thumb, .blog-page article.video .article-image .thumb').each(function(){
-            if($(this).attr('data-videosrc')){
-                thepage.get_external_video_thumb($(this).data('videosrc'),$(this));
-            }
-        });
+        ----------------------------------------------------------------------------- */
 
         /* ----------------------------------
             LIGHTBOX
             Initialize Magnific Popup with "lightbox" class
         ---------------------------------- */
 
-        thepage.create_lightboxes = function(){
-            if($.fn.magnificPopup) {
+        thepage.createLightboxes = function() {
+            if ($.fn.magnificPopup) {
 
                 // just one image on page
-                if($('a.lightbox').length > 1){
+                if ($('a.lightbox').length > 1) {
                     $('a.lightbox').magnificPopup({
                         type: 'image',
                         gallery: {
                             enabled: true
                         },
                         callbacks: {
+
                             /* FIREFOX GLITCH FIX */
                             beforeOpen: function() {
                                 $('.project-preview .thumb .overlay').hide();
                             },
                             close: function() {
-                                setTimeout(function(){
+                                setTimeout(function() {
                                     $('.project-preview .thumb .overlay').removeAttr('style');
-                                },100);
+                                }, 100);
                             }
                         }
                     });
-                }
+                } else if ($('a.lightbox').length === 1) {
 
-                // more than one image on page
-                else if($('a.lightbox').length === 1){
+                    // more than one image on page
                     $('a.lightbox').magnificPopup({
                         type: 'image'
                     });
@@ -655,13 +318,13 @@
 
             }
         };
-        thepage.create_lightboxes();
+        thepage.createLightboxes();
 
-/* -----------------------------------------------------------------------------
+        /* -----------------------------------------------------------------------------
 
-        5.) HEADER
+                5.) HEADER
 
------------------------------------------------------------------------------ */
+        ----------------------------------------------------------------------------- */
 
         /* ----------------------------------
             TOPBAR
@@ -671,16 +334,18 @@
 
         // show input
 
-        $('#topbar .search-form button.submit').click(function(){
+        $('#topbar .search-form button.submit').click(function() {
 
-            if(screen_width > 767){
-                if($(this).is(':not(.active)')){
+            if (screenWidth > 767) {
+                if ($(this).is(':not(.active)')) {
                     $(this).addClass('active');
                     $('#topbar .search-form').addClass('active');
+
                     // show input
-                    $('#topbar .search-form .input').fadeIn(300);
+                    $('#topbar .search-form .input').fadeIn(275);
+
                     // hide social icons
-                    $('#topbar .social-icons').fadeOut(300);
+                    $('#topbar .social-icons').fadeOut(275);
                     return false;
                 }
             }
@@ -689,13 +354,15 @@
 
         // close input
 
-        $('#topbar .search-form button.close').click(function(){
+        $('#topbar .search-form button.close').click(function() {
+
             // hide input
-            $('#topbar .search-form .input').fadeOut(300, function(){
+            $('#topbar .search-form .input').fadeOut(275, function() {
                 $('#topbar .search-form input').val($('#topbar .search-form input').data('placeholder'));
             });
+
             // show social icons
-            $('#topbar .social-icons').fadeIn(300, function(){
+            $('#topbar .social-icons').fadeIn(275, function() {
                 $('#topbar .search-form, #topbar .search-form button.submit').removeClass('active');
                 $(this).removeAttr('style');
             });
@@ -704,13 +371,13 @@
 
         // input placeholder
 
-        $('#topbar .search-form input').focus(function(){
-            if($(this).val() === $(this).data('placeholder')){
+        $('#topbar .search-form input').focus(function() {
+            if ($(this).val() === $(this).data('placeholder')) {
                 $(this).val('');
             }
         });
-        $('#topbar .search-form input').blur(function(){
-            if($(this).val() === ''){
+        $('#topbar .search-form input').blur(function() {
+            if ($(this).val() === '') {
                 $(this).val($(this).data('placeholder'));
             }
         });
@@ -719,22 +386,22 @@
 
         // social icons
 
-        $('#topbar .responsive-controls .social').click(function(){
+        $('#topbar .responsive-controls .social').click(function() {
             $(this).toggleClass('active');
-            $('#topbar .social-icons').slideToggle(300);
-            if($('#topbar .search-form').is(':visible')){
-                $('#topbar .search-form').slideUp(300);
+            $('#topbar .social-icons').slideToggle(275);
+            if ($('#topbar .search-form').is(':visible')) {
+                $('#topbar .search-form').slideUp(275);
                 $('#topbar .responsive-controls .search').removeClass('active');
             }
         });
 
         // search
 
-        $('#topbar .responsive-controls .search').click(function(){
+        $('#topbar .responsive-controls .search').click(function() {
             $(this).toggleClass('active');
-            $('#topbar .search-form').slideToggle(300);
-            if($('#topbar .social-icons').is(':visible')){
-                $('#topbar .social-icons').slideUp(300);
+            $('#topbar .search-form').slideToggle(275);
+            if ($('#topbar .social-icons').is(':visible')) {
+                $('#topbar .social-icons').slideUp(275);
                 $('#topbar .responsive-controls .social').removeClass('active');
             }
         });
@@ -745,72 +412,62 @@
 
         /* SET INDICATOR */
 
-        var set_mainnav_indicator = function(active_item){
+        var setMainnavIndicator = function(activeItem) {
             var indicator = $('nav.main .indicator');
-            var offset = Math.floor(active_item.position().left) + 27;
-            var width = Math.floor(active_item.find('> a').width());
+            var offset = Math.floor(activeItem.position().left) + 27;
+            var width = Math.floor(activeItem.find('> a').width());
+
             indicator.css({
-                'left' : offset,
-                'width' : width
+                left: offset,
+                width: width
             });
         };
-        set_mainnav_indicator($('nav.main > ul > li.active').first());
+
+        setMainnavIndicator($('nav.main > ul > li.active').first());
 
         /* HOVER ACTION */
 
-        $('nav.main > ul > li').hover(function(){
-            if(screen_width > 979){
+        $('nav.main > ul > li').hover(function() {
 
-                // set indicator
+            // set indicator
+            setMainnavIndicator($(this));
 
-                set_mainnav_indicator($(this));
+            // show submenu
+            $(this).find('ul').stop(true, true).slideDown(275);
 
-                // show submenu
+        }, function() {
 
-                $(this).find('ul').stop(true,true).slideDown(300);
+            // reset indicator
+            setMainnavIndicator($('nav.main > ul > li.active'));
 
-            }
-        }, function(){
-            if(screen_width > 979){
-
-                // reset indicator
-
-                set_mainnav_indicator($('nav.main > ul > li.active'));
-
-                // hide submenu
-
-                $(this).find('ul').slideUp(300);
-
-            }
+            // hide submenu
+            $(this).find('ul').slideUp(275);
         });
 
         /* RESPONSIVE NAV */
 
         // toggle nav
 
-        $('nav.main > button').click(function(){
+        $('nav.main > button').click(function() {
             $(this).toggleClass('active');
-            $('nav.main > ul').slideToggle(300);
+            $('nav.main > ul').slideToggle(275);
         });
 
         // toggle submenu
 
-        $('nav.main .arrow').click(function(){
-            if(screen_width <= 979){
-                $(this).toggleClass('active');
-                $(this).parent().find('ul').slideToggle(300);
-            }
+        $('nav.main .arrow').click(function() {
+            $(this).toggleClass('active');
+            $(this).parent().find('ul').slideToggle(275);
         });
 
+        /* -----------------------------------------------------------------------------
 
-/* -----------------------------------------------------------------------------
+                6.) MAIN SLIDER
+                Default slider for homepage
 
-        6.) MAIN SLIDER
-        Default slider for homepage
+        ----------------------------------------------------------------------------- */
 
------------------------------------------------------------------------------ */
-
-        $('#slider').each(function(){
+        $('#slider').each(function() {
 
             var slider = $(this);
             var carousel = $(this).find('.carousel');
@@ -821,42 +478,41 @@
                 LOAD IMAGES
             ---------------------------------- */
 
-            var number_of_images = slider.find('img').length;
-            var loaded_images = 0;
+            var numberOfImages = slider.find('img').length;
+            var loadedImages = 0;
 
-            if(number_of_images > 0 && !oldIE){
+            if (numberOfImages > 0) {
 
                 slider.find('img').one('load', function() {
-                    loaded_images++;
-                    if(number_of_images === loaded_images){
-                        slider.find('.loading-anim').fadeOut(300);
+                    loadedImages++;
+                    if (numberOfImages === loadedImages) {
+                        slider.find('.loading-anim').fadeOut(275);
                     }
                 }).each(function() {
-                    if(this.complete) { $(this).load(); }
+                    if (this.complete) { $(this).load(); }
                 });
-            }
-            else {
-                slider.find('.loading-anim').fadeOut(300);
+            } else {
+                slider.find('.loading-anim').fadeOut(275);
             }
 
             /* ----------------------------------
                 ANIMATE INDICATOR
             ---------------------------------- */
 
-            var slider_indicator_animate = function(progress,time){
+            var sliderIndicatorAnimate = function(progress, time) {
 
                 indicator.stop();
 
                 // set default progress value
 
-                indicator.css('width',progress + '%');
+                indicator.css('width', progress + '%');
 
                 // animate progressbar
 
-                if(!slider.find('button.pause').hasClass('paused')){
+                if (!slider.find('button.pause').hasClass('paused')) {
                     indicator.animate({
-                        'width' : '100%'
-                    },time, function(){
+                        'width': '100%'
+                    }, time, function() {
 
                         // slide next
                         carousel.carousel('next');
@@ -870,12 +526,12 @@
                 WITH INTERVAL
             ---------------------------------- */
 
-            if(interval !== false){
+            if (interval !== false) {
 
                 /* INDICATOR */
 
-                if(indicator !== false){
-                    slider_indicator_animate(0,interval);
+                if (indicator !== false) {
+                    sliderIndicatorAnimate(0, interval);
                 }
 
                 /* INIT */
@@ -887,20 +543,17 @@
 
                 /* SLID EVENT */
 
-                carousel.bind('slid',function(){
-                    indicator.attr('data-percentage',0);
-                    indicator.attr('data-time',0);
-                    slider_indicator_animate(0,interval);
+                carousel.bind('slid', function() {
+                    indicator.attr('data-percentage', 0);
+                    indicator.attr('data-time', 0);
+                    sliderIndicatorAnimate(0, interval);
                 });
 
-            }
+            } else {
 
             /* ----------------------------------
                 WITHOUT INTERVAL
             ---------------------------------- */
-
-            else {
-
                 carousel.carousel({
                     interval: false
                 });
@@ -911,8 +564,8 @@
                 PREV SLIDE
             ---------------------------------- */
 
-            $('#slider .nav.prev button').click(function(){
-                if(indicator !== false){
+            $('#slider .nav.prev button').click(function() {
+                if (indicator !== false) {
                     indicator.stop();
                 }
                 carousel.carousel('prev');
@@ -922,8 +575,8 @@
                 NEXT SLIDE
             ---------------------------------- */
 
-            $('#slider .nav.next button').click(function(){
-                if(indicator !== false){
+            $('#slider .nav.next button').click(function() {
+                if (indicator !== false) {
                     indicator.stop();
                 }
                 carousel.carousel('next');
@@ -933,64 +586,47 @@
                 PAUSE
             ---------------------------------- */
 
-            if(interval !== false){
-            $('#slider button.pause').click(function(){
+            if (interval !== false) {
+                $('#slider button.pause').click(function() {
 
-                /* UNPAUSE */
+                    /* UNPAUSE */
 
-                if($(this).hasClass('paused')){
+                    if ($(this).hasClass('paused')) {
 
-                    $(this).removeClass('paused');
+                        $(this).removeClass('paused');
 
-                    // unpause indicator
+                        // unpause indicator
 
-                    if(indicator !== false){
-                        slider_indicator_animate(parseInt(indicator.attr('data-percentage'),10) + 1,interval - indicator.attr('data-time'));
+                        if (indicator !== false) {
+                            sliderIndicatorAnimate(parseInt(indicator.attr('data-percentage'), 10) + 1, interval - indicator.attr('data-time'));
+                        }
+
+                    } else {
+
+                        /* PAUSE */
+
+                        $(this).addClass('paused');
+
+                        // pause indicator
+
+                        if (indicator !== false) {
+                            indicator.stop();
+                            indicator.attr('data-percentage', Math.floor(indicator.width() / (indicator.parent().width() / 100)));
+                            indicator.attr('data-time', (interval / 100) * indicator.attr('data-percentage'));
+                        }
+
                     }
 
-                }
-
-                /* PAUSE */
-
-                else {
-
-                    $(this).addClass('paused');
-
-                    // pause indicator
-
-                    if(indicator !== false){
-                        indicator.stop();
-                        indicator.attr('data-percentage',Math.floor(indicator.width() / (indicator.parent().width() / 100)));
-                        indicator.attr('data-time',(interval / 100) * indicator.attr('data-percentage'));
-                    }
-
-                }
-
-            });
+                });
             }
 
         });
 
-/* -----------------------------------------------------------------------------
+        /* -----------------------------------------------------------------------------
 
-        7.) HOMEPAGE
+                8.) PAGE TYPES
 
------------------------------------------------------------------------------ */
-
-        /* ----------------------------------
-            SERVICES
-        ---------------------------------- */
-
-        $('#home-services .service').hover(function(){
-            $(this).toggleClass('hover');
-        });
-
-
-/* -----------------------------------------------------------------------------
-
-        8.) PAGE TYPES
-
------------------------------------------------------------------------------ */
+        ----------------------------------------------------------------------------- */
 
         /* ----------------------------------
             ABOUT PAGE
@@ -998,422 +634,99 @@
 
         /* TEAM MEMBER THUMBNAIL */
 
-        thepage.about_member_hover = function(){
+        thepage.aboutMemberHover = function() {
 
-            $('.about-team .team-member .thumb').hover(function(){
+            $('.about-team .team-member .thumb').hover(function() {
                 var self = $(this);
-                self.find('.overlay').stop(true,true);
+
+                self.find('.overlay').stop(true, true);
                 self.addClass('hover');
-                self.bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(){
+                self.bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function() {
                     self.addClass('hovered');
                 });
-            }, function(){
+            }, function() {
                 var self = $(this);
+
                 self.removeClass('hover');
-                self.bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(){
+                self.bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function() {
                     self.removeClass('hovered');
                 });
             });
 
         };
-        thepage.about_member_hover();
+        thepage.aboutMemberHover();
 
-        /* ----------------------------------
-            PORTFOLIO PAGE AJAXED PAGINATION
-        ---------------------------------- */
+        /* -----------------------------------------------------------------------------
 
-        /* SHOW NEW PROJECTS */
+                9.) WINDOW RESIZE
 
-        var portfolio_show_projects = function (element) {
+        ----------------------------------------------------------------------------- */
 
-            $('.loading-area ul.row').hide();
-            $('.loading-area ul.row').appendTo(element.find('.projects-inner'));
-            element.find('ul.row:hidden').fadeIn(300);
+        var screenTransition = false;
+        var actualScreenWidth = screenWidth;
 
-            // REPLACE PAGINATION
+        $(window).resize(function() {
 
-            element.find('.button-pagination').remove();
-            if($('.loading-area .button-pagination').length > 0){
-                $('.loading-area .button-pagination').appendTo(element);
-                element.find('.button-pagination a').click(function(){
-                    portfolio_pagination_click($(this),element);
-                    return false;
-                });
-            }
-
-            // SET THUMB HOVER ACTION
-
-            thepage.create_project_previews();
-
-            // SET LIGHTBOX
-
-            thepage.create_lightboxes();
-
-            // REMOVE TEMP DATA
-
-            $('.loading-area').remove();
-
-            // IE8 FIX
-
-            if (typeof(css3pie_initialize) === 'function') {
-                css3pie_initialize();
-            }
-
-        };
-
-        /* LOAD NEW PROJECTS */
-
-        var portfolio_load_projects = function (link,element) {
-
-            $('body').append('<div class="loading-area" style="display: none;"></div>');
-            $('.loading-area').load(link + ' .projects',function(){
-
-                // WAIT FOR LOAD OF IMAGES
-
-                var number_of_images = $('.loading-area img').length;
-                var loaded_images = 0;
-
-                if(number_of_images > 0 && !oldIE){
-                    $('.loading-area img').one('load', function() {
-                        loaded_images++;
-                        if(number_of_images === loaded_images){
-
-                            // IMAGES ARE LOADED
-
-                            portfolio_show_projects(element);
-
-                        }
-                    }).each(function() {
-                        if(this.complete) { $(this).load(); }
-                    });
-                }
-                // NO IMAGES OR OLD IE
-                else {
-                    portfolio_show_projects(element);
-                }
-
-            });
-
-        };
-
-        /* CLICK ON BUTTON ACTION */
-
-        var portfolio_pagination_click = function(button,parent){
-            if(!button.hasClass('loading')){
-
-                var label = button.find('.label');
-
-                /* ADD LOADING LABEL AND CLASS */
-
-                button.addClass('loading');
-                label.text(button.data('loadinglabel'));
-
-                /* TRIGGER LOAD */
-
-                portfolio_load_projects(button.attr('href'),parent);
-
-            }
-        };
-
-        /* CLICK ON BUTTON */
-
-        $('.portfolio-page .projects').each(function(){
-
-            var self = $(this);
-            self.find('.button-pagination a').click(function(){
-                portfolio_pagination_click($(this),self);
-                return false;
-            });
-
-        });
-
-
-/* -----------------------------------------------------------------------------
-
-        9.) WIDGETS
-
------------------------------------------------------------------------------ */
-
-        /* ----------------------------------
-            WIDGET LOADED
-        ---------------------------------- */
-
-        var widget_loaded = function(widget){
-
-            widget.find('.loading-anim').fadeOut(300);
-            widget.find('.feed').fadeIn(300, function(){
-                widget.removeClass('loading');
-            });
-
-        };
-
-        /* ----------------------------------
-            FLICKR WIDGET
-            Based on this tutorial:
-            http://www.leonamarant.com/2009/06/16/adding-a-flickr-feed-to-your-site-with-jquery/
-        ---------------------------------- */
-
-        // load images to feed
-        $('.flickr.widget.loading').each(function(){
-            var self = $(this);
-            var feed = $(this).find('.feed');
-
-            var feed_id = $(this).data('id');
-            var feed_limit = $(this).data('limit');
-
-            if(isNaN(feed_limit) || feed_limit < 1) {
-                feed_limit = 1;
-            }
-
-            // create blank image list inside feed
-            feed.html('<ul class="image-list clearfix"></ul>');
-
-            // get the feed
-            $.getJSON('http://api.flickr.com/services/feeds/photos_public.gne?id=' + feed_id + '&lang=en-us&format=json&jsoncallback=?', function(data){
-                // get number of images to be shown,
-                // check for posibility that number of all images in feed is smaller than number of images that we want to show
-                var number_of_images = feed_limit;
-                if(data.items.length < feed_limit){
-                    number_of_images = data.items.length;
-                }
-                // main feed loop
-                var i;
-                for(i = 0; i < number_of_images; i++){
-                    feed.find('ul').append('<li><a href="' + data.items[i].link + '" style="background-image: url(' + data.items[i].media.m + ');" target="_blank" rel="external"><img src="' + data.items[i].media.m + '" alt="' + data.items[i].title + '"></a></li>');
-                }
-                feed.find('li:nth-child(2n)').addClass('second');
-                feed.find('li:nth-child(3n)').addClass('third');
-                feed.find('li:nth-child(4n)').addClass('fourth');
-
-                // load images
-                number_of_images = feed.find('img').length;
-                var loaded_images = 0;
-
-                if(number_of_images > 0 && !oldIE){
-                    feed.find('img').one('load', function() {
-                        loaded_images++;
-                        if(number_of_images === loaded_images){
-
-                            // images are loaded
-                            widget_loaded(self);
-
-                        }
-                    }).each(function() {
-                        if(this.complete) { $(this).load(); }
-                    });
-                }
-                else {
-                    widget_loaded(self);
-                }
-
-            });
-
-        });
-
-        /* ----------------------------------
-            INSTAGRAM WIDGET
-        ---------------------------------- */
-
-        if($.fn.embedagram) {
-
-            $('.instagram.widget.loading').each(function(){
-                var self = $(this);
-                var feed = $(this).find('.feed');
-
-                var feed_id = $(this).data('id');
-                var feed_limit = $(this).data('limit');
-
-                if(isNaN(feed_limit) || feed_limit < 1) {
-                    feed_limit = 1;
-                }
-
-                // create blank image list inside feed
-                feed.html('<ul class="image-list clearfix"></ul>');
-
-                /* launch embedegram */
-                feed.find('ul.image-list').embedagram({
-                    instagram_id: feed_id,
-                    limit: feed_limit,
-                    success: function(){
-                        // add external rel to each link
-                        feed.find('a').each(function(){
-                            $(this).css('background-image','url(' + $(this).find('img').attr('src') + ')');
-
-                            $(this).attr('target','_blank');
-                            $(this).attr('rel','external');
-                            if($(this).find('img').attr('title')){
-                                $(this).find('img').removeAttr('title');
-                            }
-                        });
-                        feed.find('li:nth-child(2n)').addClass('second');
-                        feed.find('li:nth-child(3n)').addClass('third');
-                        feed.find('li:nth-child(4n)').addClass('fourth');
-
-                        // load images
-                        var number_of_images = feed.find('img').size();
-                        var loaded_images = 0;
-
-                        if(number_of_images > 0 && !oldIE){
-                            feed.find('img').one('load', function() {
-                                loaded_images++;
-                                if(number_of_images === loaded_images){
-
-                                    // images are loaded
-                                    widget_loaded(self);
-
-                                }
-                            }).each(function() {
-                                if(this.complete) { $(this).load(); }
-                            });
-                        }
-                        else {
-                            widget_loaded(self);
-                        }
-                    }
-                });
-
-            });
-
-        }
-
-        /* ----------------------------------
-            DRIBBBLE WIDGET
-        ---------------------------------- */
-
-        if($.jribbble) {
-            $('.dribbble.widget.loading').each(function(){
-                var self = $(this);
-                var feed = $(this).find('.feed');
-
-                var feed_id = $(this).data('id');
-                var feed_limit = $(this).data('limit');
-
-                if(isNaN(feed_limit) || feed_limit < 1) {
-                    feed_limit = 1;
-                }
-
-                // launch jribbble
-                $.jribbble.getShotsByPlayerId(feed_id, function (playerShots) {
-                    // check for posibility that number of all images in feed is smaller than number of images that we want to show
-                    var number_of_images = feed_limit;
-                    if(playerShots.shots.length < feed_limit){
-                        number_of_images = playerShots.shots.length;
-                    }
-
-                    // create blank image list inside feed
-                    feed.html('<ul class="image-list clearfix"></ul>');
-
-                    // insert items
-                    var i;
-                    for(i = 0; i < number_of_images; i++){
-                        feed.find('ul').append('<li><a href="' + playerShots.shots[i].url + '" style="background-image: url(' + playerShots.shots[i].image_teaser_url + ');" title="' + playerShots.shots[i].title + '" target="_blank" rel="external"><img src="' + playerShots.shots[i].image_teaser_url + '" alt="' + playerShots.shots[i].title + '"></a></li>');
-                    }
-                    feed.find('li:nth-child(2n)').addClass('second');
-                    feed.find('li:nth-child(3n)').addClass('third');
-                    feed.find('li:nth-child(4n)').addClass('fourth');
-
-                    // load images
-                    number_of_images = self.find('img').size();
-                    var loaded_images = 0;
-
-                    if(number_of_images > 0 && !oldIE){
-                        feed.find('img').one('load', function() {
-                            loaded_images++;
-                            if(number_of_images === loaded_images){
-
-                                // images are loaded
-                                widget_loaded(self);
-
-                            }
-                        }).each(function() {
-                            if(this.complete) { $(this).load(); }
-                        });
-                    }
-                    else {
-                        widget_loaded(self);
-                    }
-
-                }, {page: 1, per_page: feed_limit});
-
-            });
-        }
-
-
-/* -----------------------------------------------------------------------------
-
-        10.) WINDOW RESIZE
-
------------------------------------------------------------------------------ */
-
-        var screen_transition = false;
-        var actual_screen_width = screen_width;
-
-        $(window).resize(function(){
-
-            screen_width = thepage.get_window_width();
+            screenWidth = thepage.getWindowWidth();
 
             /* CHECK FOR SCREEN TRANSITION */
 
-            if(screen_width !== actual_screen_width){
-                screen_transition = true;
-                actual_screen_width = screen_width;
-            }
-            else {
-                screen_transition = false;
+            if (screenWidth !== actualScreenWidth) {
+                screenTransition = true;
+                actualScreenWidth = screenWidth;
+            } else {
+                screenTransition = false;
             }
 
             /* IF TRANSITION */
 
-            if(screen_transition){
+            if (screenTransition) {
+                if (screenWidth > 979) {
 
-                // topbar
-
-                if(screen_width > 979){
+                    // topbar
                     $('#topbar .social-icons, #topbar .search-form, #topbar .input').removeAttr('style');
                     $('#topbar .active').removeClass('active');
-                }
 
-                // main nav
-
-                if(screen_width > 979){
+                    // main nav
                     $('nav.main ul').removeAttr('style');
                     $('nav.main .arrow.active, nav.main > button.active').removeClass('active');
                 }
 
                 // list slider
 
-                $('.list-slider').each(function(){
+                $('.list-slider').each(function() {
                     $(this).data('listslider').refresh();
                 });
 
             }
-
         });
 
+        /* -----------------------------------------------------------------------------
 
-/* -----------------------------------------------------------------------------
+                END.
 
-        END.
-
------------------------------------------------------------------------------ */
+        ----------------------------------------------------------------------------- */
 
     };
 
-    $.fn.initpage = function(options){
-        return this.each(function(){
+    $.fn.initpage = function(options) {
+        return this.each(function() {
             var element = $(this);
+
             // Return early if this element already has a plugin instance
-            if(element.data('initpage')) { return; }
+            if (element.data('initpage')) {
+                return;
+            }
+
             // pass options to plugin constructor
-            var initpage = new ThePage(this,options);
+            var initpage = new ThePage(this, options);
+
             // Store plugin object in this element's data
-            element.data('initpage',initpage);
+            element.data('initpage', initpage);
         });
     };
-
 
 })(jQuery);
-
 
 /* -----------------------------------------------------------------------------
 
@@ -1421,7 +734,7 @@
 
 ----------------------------------------------------------------------------- */
 
-$(document).ready(function(){
+$(document).ready(function() {
 
     "use strict";
     $('body').initpage().data('initpage');
